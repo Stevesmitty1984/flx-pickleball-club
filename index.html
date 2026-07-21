@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+/* ═══ HORIZONTAL OVERFLOW FIX — prevents ALL sideways scroll ═══ */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+* {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+/* SVG and video are allowed to be wider internally but clipped */
+svg, video, iframe {
+  max-width: 100% !important;
+}
+/* Ticker needs overflow hidden on its container, not max-width */
+.ticker, .ticker-wrap {
+  overflow: hidden !important;
+  max-width: 100vw !important;
+}
+/* Fix the standalone burger — always pinned inside viewport */
+.sb-burger {
+  position: fixed !important;
+  top: 16px !important;
+  right: 16px !important;
+  left: auto !important;
+  z-index: 10001 !important;
+  transform: none !important;
+}
+/* Nav bar itself must not overflow */
+header, .nav, .wrap.nav {
+  max-width: 100vw !important;
+  overflow: visible !important;
+}
+/* Any absolute/fixed positioned elements must not push width */
+.grain, .progress, [style*="position:fixed"], [style*="position:absolute"] {
+  max-width: none !important;
+}
+/* Specific known wide offenders */
+.sched, .shop-cats, .price-grid, .coach-grid, .three-grid, .two-grid, .four-grid {
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+/* Inner page hero bg must not overflow */
+.page-hero-bg, .page-hero-bg img, .page-hero-bg video {
+  max-width: 100vw !important;
+  left: 0 !important;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLX Pickleball Club — Indoor Pickleball in Horseheads, NY</title>
+<meta name="description" content="Six indoor PickleRoll pickleball courts in Horseheads, NY. Open play, court rentals, lessons, and events — open seven days a week, for every age and level.">
+  <meta property="og:title" content="FLX Pickleball Club — Indoor Pickleball in Horseheads, NY">
+  <meta property="og:description" content="Six indoor PickleRoll courts in Horseheads, NY. Drop-in open play, court rentals, lessons, and events — open 7 days a week, for every age and level.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://flxpickleballclub.com">
+  <meta property="og:image" content="public/images/flx/facility-main.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FLX Pickleball Club — Horseheads, NY">
+  <meta name="twitter:description" content="Six indoor PickleRoll courts. Open play, rentals, lessons, and events. Open 7 days a week.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   FLX PICKLEBALL CLUB — v4 "ASSET INTEGRATION PASS"
+   All imagery loads from local files via the FLX_IMAGES map at the bottom
+   of this file. Drop approved photos into  public/images/flx/  using the
+   exact filenames in that map and they appear automatically. If a file is
+   missing, a designed gradient card shows instead, with no filler text
+   visible to the public.
+   ========================================================================== */
+:root{
+  --coal:#0B0E13; --coal-2:#10141B; --coal-3:#161C26;
+  --cobalt:#3D63FF; --cobalt-hi:#6E8BFF; --cobalt-deep:#1D3ECC;
+  --ember:#FF7A45;
+  --sand:#EFECE3; --sand-2:#E4E0D4;
+  --text:#F0F1EE; --muted:#9AA3B2; --muted-2:#6C7686; --ink:#12151B; --muted-d:#5D6470;
+  --line:rgba(240,241,238,.11); --line-l:rgba(18,21,27,.13);
+  --shadow:0 34px 80px -34px rgba(0,0,0,.65);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --display:"Big Shoulders Display","Arial Narrow",sans-serif;
+  --body:"Archivo","Helvetica Neue",sans-serif;
+  --serif:"Instrument Serif",Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--coal);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--cobalt);color:#fff}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--cobalt-hi);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,60px)}
+
+/* ---- Type roles ---- */
+.eyebrow{font:600 11px/1 var(--body);letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:14px}
+.eyebrow .idx{color:var(--cobalt-hi);font-weight:700}
+.eyebrow::after{content:"";width:34px;height:1px;background:var(--cobalt);flex:none;opacity:.7}
+.light .eyebrow{color:var(--muted-d)}
+.display{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.9;letter-spacing:.008em}
+h2.display{font-size:clamp(2.6rem,5.6vw,4.8rem);margin:20px 0 0}
+h2 .serif{font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:0;line-height:1;font-size:.92em}
+.lede{font-size:clamp(1.03rem,1.35vw,1.2rem);color:var(--muted);max-width:58ch;margin-top:22px;line-height:1.72}
+.light .lede{color:var(--muted-d)}
+.ghost{position:absolute;z-index:0;font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.8;letter-spacing:.02em;color:transparent;-webkit-text-stroke:1px rgba(240,241,238,.06);font-size:clamp(8rem,20vw,19rem);pointer-events:none;user-select:none;white-space:nowrap}
+.light .ghost{-webkit-text-stroke:1px rgba(18,21,27,.055)}
+
+/* ---- Buttons ---- */
+.btn{display:inline-flex;align-items:center;gap:11px;font:600 13px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:18px 32px;border-radius:3px;border:1px solid transparent;cursor:pointer;position:relative;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background-color .35s,color .35s,border-color .35s}
+.btn svg{width:14px;height:14px;transition:transform .35s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-primary{background:var(--cobalt);color:#fff;box-shadow:0 14px 34px -14px rgba(61,99,255,.55)}
+.btn-primary:hover{transform:translateY(-2px);background:var(--cobalt-hi);box-shadow:0 22px 44px -14px rgba(61,99,255,.6)}
+.btn-ghost{border-color:var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--cobalt);background:rgba(61,99,255,.1);transform:translateY(-2px)}
+.light .btn-ghost{border-color:var(--line-l);color:var(--ink)}
+.light .btn-ghost:hover{border-color:var(--cobalt);background:rgba(61,99,255,.07)}
+
+/* ---- Media panels ----
+   Photo present → photo + overlay + caption.
+   Photo missing → designed gradient + etched court lines. No labels. */
+.media{position:relative;overflow:hidden;border-radius:6px;border:1px solid var(--line);background:var(--coal-3);isolation:isolate}
+.media .art{position:absolute;inset:0;z-index:0;transition:transform 1.1s var(--ease)}
+.media:hover .art{transform:scale(1.045)}
+.media img.photo{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;opacity:0;transition:transform 1.1s var(--ease),opacity .8s var(--ease)}
+.media.has-photo img.photo{opacity:1}
+.media:hover img.photo{transform:scale(1.04)}
+.m-a .art{background:radial-gradient(120% 130% at 18% 8%,rgba(61,99,255,.5),transparent 52%),radial-gradient(110% 120% at 92% 96%,rgba(255,122,69,.24),transparent 55%),linear-gradient(155deg,#1A2130,#0D1119 70%)}
+.m-b .art{background:radial-gradient(120% 130% at 84% 6%,rgba(61,99,255,.42),transparent 55%),radial-gradient(120% 130% at 6% 100%,rgba(110,139,255,.2),transparent 50%),linear-gradient(200deg,#171D2A,#0C0F16 72%)}
+.m-c .art{background:radial-gradient(130% 130% at 50% 118%,rgba(255,122,69,.3),transparent 55%),radial-gradient(110% 110% at 88% 0%,rgba(61,99,255,.36),transparent 52%),linear-gradient(170deg,#192031,#0C0F16 75%)}
+.media .lines{position:absolute;inset:0;z-index:2;opacity:.5}
+.media .lines svg{width:100%;height:100%}
+.media .lines path,.media .lines line,.media .lines rect{stroke:rgba(240,241,238,.14);fill:none}
+.media.has-photo .lines{display:none}
+.media::after{content:"";position:absolute;inset:0;z-index:3;background:radial-gradient(130% 100% at 70% 12%,transparent 42%,rgba(11,14,19,.5) 100%)}
+.media.has-photo::after{background:linear-gradient(0deg,rgba(11,14,19,.62) 0%,rgba(11,14,19,.08) 45%,rgba(11,14,19,.22) 100%)}
+.media .cap{position:absolute;z-index:5;left:18px;right:18px;bottom:16px;font:500 13px/1.45 var(--body);color:rgba(240,241,238,.94);opacity:0;transition:opacity .6s;text-shadow:0 1px 14px rgba(0,0,0,.55)}
+.media.has-photo .cap{opacity:1}
+
+/* ---- Nav ---- */
+header{position:fixed;inset:0 0 auto;z-index:100;transition:background-color .4s,border-color .4s,backdrop-filter .4s;border-bottom:1px solid transparent}
+header.scrolled{background:rgba(11,14,19,.84);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:27px;letter-spacing:.02em;line-height:1}
+.logo .mark{width:10px;height:10px;background:var(--cobalt);transform:rotate(45deg);flex:none}
+.logo span{font:600 10px/1.2 var(--body);letter-spacing:.26em;color:var(--muted);text-transform:uppercase}
+nav.links{display:flex;gap:36px}
+nav.links a{font:500 12.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:8px 0;position:relative;transition:color .3s}
+nav.links a::after{content:"";position:absolute;left:0;bottom:2px;width:0;height:1.5px;background:var(--cobalt);transition:width .35s var(--ease)}
+nav.links a:hover{color:var(--text)} nav.links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.nav .btn{padding:13px 22px}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:3px;width:44px;height:44px;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.burger span{width:18px;height:1.6px;background:var(--text);transition:transform .3s var(--ease),opacity .3s}
+.mobile-menu{display:none;position:fixed;inset:78px 0 0;z-index:99;background:rgba(11,14,19,.97);backdrop-filter:blur(16px);padding:34px clamp(20px,4vw,60px);flex-direction:column}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font:700 26px/1.2 var(--body);letter-spacing:-.01em;padding:16px 0;border-bottom:1px solid var(--line);color:var(--text)}
+.mobile-menu .btn{margin-top:26px;justify-content:center}
+body.menu-open .burger span:nth-child(1){transform:translateY(6.6px) rotate(45deg)}
+body.menu-open .burger span:nth-child(2){opacity:0}
+body.menu-open .burger span:nth-child(3){transform:translateY(-6.6px) rotate(-45deg)}
+
+/* ---- Hero ---- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:130px 0 90px;overflow:hidden;isolation:isolate;
+  background:radial-gradient(1100px 700px at 88% 0%,rgba(61,99,255,.16),transparent 58%),
+             radial-gradient(800px 560px at -6% 78%,rgba(29,62,204,.18),transparent 55%),
+             var(--coal)}
+.hero-photo{position:absolute;inset:0;z-index:-4}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,14,19,.95) 0%,rgba(11,14,19,.84) 40%,rgba(11,14,19,.55) 100%)}
+.hero-floor{position:absolute;inset:auto 0 0;height:44%;z-index:-3;background:linear-gradient(rgba(61,99,255,0),rgba(61,99,255,.06));-webkit-mask:linear-gradient(transparent,black 55%);mask:linear-gradient(transparent,black 55%)}
+.hero-floor::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 118px,rgba(240,241,238,.05) 118px 119px)}
+.hero-court{position:absolute;inset:0;z-index:-2;pointer-events:none}
+.hero-court svg{position:absolute;right:-3%;top:50%;transform:translateY(-50%);width:min(56vw,800px);height:auto;filter:drop-shadow(0 0 26px rgba(61,99,255,.16))}
+.hero-court .cl{stroke:rgba(110,139,255,.6);fill:none;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.6s var(--ease) forwards}
+.hero-court .cl.d1{animation-delay:.35s}.hero-court .cl.d2{animation-delay:.7s}.hero-court .cl.d3{animation-delay:1s}
+.hero-court .net{stroke:var(--cobalt);stroke-dasharray:400;stroke-dashoffset:400;animation:draw 2.2s var(--ease) 1.5s forwards, netBreathe 6s ease-in-out 4s infinite}
+.hero-court .chase{stroke:var(--cobalt-hi);fill:none;stroke-width:2.4;stroke-dasharray:90 2470;stroke-dashoffset:0;opacity:0;animation:chaseIn .8s ease 3.8s forwards, chase 11s linear 3.8s infinite;filter:drop-shadow(0 0 8px rgba(110,139,255,.9))}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes chase{to{stroke-dashoffset:-2560}}
+@keyframes chaseIn{to{opacity:.9}}
+@keyframes netBreathe{0%,100%{opacity:1}50%{opacity:.45}}
+.hero-court2{position:absolute;inset:0;z-index:-3;pointer-events:none;opacity:.22}
+.hero-court2 svg{position:absolute;right:22%;top:56%;transform:translateY(-50%) scale(.62);width:min(56vw,800px)}
+.hero-court2 line,.hero-court2 rect{stroke:rgba(110,139,255,.5);fill:none}
+.hero-sweep{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(112deg,transparent 26%,rgba(61,99,255,.07) 44%,rgba(240,241,238,.09) 50%,rgba(61,99,255,.07) 56%,transparent 74%);background-size:260% 100%;animation:sweep 11s ease-in-out infinite}
+@keyframes sweep{0%{background-position:130% 0}55%{background-position:-30% 0}100%{background-position:130% 0}}
+.hero-glow{position:absolute;z-index:-1;left:-8%;top:18%;width:560px;height:560px;background:radial-gradient(circle,rgba(61,99,255,.14),transparent 62%);animation:glowDrift 12s ease-in-out infinite;pointer-events:none}
+@keyframes glowDrift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,-40px) scale(1.15)}}
+.hero-inner{position:relative;z-index:2;max-width:860px}
+h1.display{font-size:clamp(2.5rem,6.4vw,5.4rem);max-width:16ch}
+.line-mask{display:block;overflow:hidden;padding-bottom:.04em;margin-bottom:-.04em}
+.line-mask>span{display:block;transform:translateY(110%);animation:riseIn 1.15s var(--ease) forwards}
+.line-mask.l1>span{animation-delay:.3s}.line-mask.l2>span{animation-delay:.5s}.line-mask.l3>span{animation-delay:.7s}
+@keyframes riseIn{to{transform:translateY(0)}}
+h1 .accent{color:transparent;-webkit-text-stroke:1.5px var(--cobalt-hi)}
+.hero-sub{font-size:clamp(1.06rem,1.4vw,1.24rem);color:var(--muted);max-width:52ch;margin:30px 0 40px;opacity:0;animation:fadeUp 1s var(--ease) 1.05s forwards}
+.hero-sub strong{color:var(--text);font-weight:600}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;opacity:0;animation:fadeUp 1s var(--ease) 1.25s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.hero-proof{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:clamp(44px,6vh,70px);opacity:0;animation:fadeUp 1s var(--ease) 1.45s forwards}
+.hero-proof div{padding:26px 36px 0 0;margin-right:36px;border-right:1px solid var(--line)}
+.hero-proof div:last-child{border-right:none;margin-right:0}
+.hero-proof b{font:700 1.04rem/1.2 var(--body);color:var(--text);display:block}
+.hero-proof span{font:500 11px/1.5 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:6px;display:block}
+.scroll-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:9px;font:500 10px/1 var(--body);letter-spacing:.26em;text-transform:uppercase;color:var(--muted-2);opacity:0;animation:fadeUp 1s var(--ease) 1.8s forwards}
+.scroll-hint .bar{width:1px;height:36px;background:linear-gradient(var(--cobalt),transparent);position:relative;overflow:hidden}
+.scroll-hint .bar::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--cobalt-hi);animation:scrolldot 2.4s ease-in-out infinite}
+@keyframes scrolldot{0%{top:-100%}60%,100%{top:100%}}
+
+/* ---- Ticker ---- */
+.ticker{border-block:1px solid var(--line);background:var(--coal-2);overflow:hidden;padding:15px 0}
+.ticker-track{display:flex;width:max-content;animation:marquee 40s linear infinite}
+.ticker span{font:600 12px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding:0 28px;display:flex;align-items:center;gap:28px}
+.ticker span i{width:7px;height:7px;background:var(--cobalt);transform:rotate(45deg);flex:none}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---- Sections ---- */
+section{padding:clamp(90px,11.5vw,156px) 0;position:relative;overflow:hidden}
+.light{background:var(--sand);color:var(--ink)}
+.head{max-width:840px;position:relative;z-index:2}
+.head.split{max-width:none;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+
+/* ---- Quick actions ---- */
+.quick{padding:clamp(58px,7vw,88px) 0;background:var(--coal-2);border-bottom:1px solid var(--line)}
+.quick-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.quick a{padding:30px 26px;border-right:1px solid var(--line);position:relative;display:flex;flex-direction:column;gap:42px;min-height:172px;transition:background-color .35s}
+.quick a:last-child{border-right:none}
+.quick a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--cobalt);transition:width .4s var(--ease)}
+.quick a:hover{background:rgba(61,99,255,.09)} .quick a:hover::after{width:100%}
+.quick .num{font:600 11px/1 var(--body);letter-spacing:.18em;color:var(--muted)}
+.quick h3{font:700 1.2rem/1.15 var(--body);letter-spacing:-.01em;display:flex;align-items:center;gap:10px;margin-top:auto}
+.quick h3 svg{width:15px;height:15px;flex:none;color:var(--cobalt-hi);transition:transform .35s var(--ease)}
+.quick a:hover h3 svg{transform:translate(3px,-3px)}
+
+/* ---- Facility ---- */
+.facility-lead{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,84px);align-items:end;margin-bottom:clamp(30px,4vw,52px);position:relative;z-index:2}
+.facility-hero{aspect-ratio:16/9;margin-top:clamp(40px,5vw,60px)}
+.facility-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.facility-row .media{aspect-ratio:4/3.3}
+.spec-strip{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(44px,5vw,68px);border-top:1px solid var(--line-l)}
+.spec{padding:30px 28px 6px 0;border-right:1px solid var(--line-l)}
+.spec:last-child{border-right:none}
+.spec .k{font-family:var(--display);font-weight:800;font-size:clamp(2.3rem,3.6vw,3.2rem);color:var(--cobalt-deep);line-height:1}
+.spec h3{font:700 1.02rem/1.3 var(--body);color:var(--ink);margin-top:13px}
+.spec p{color:var(--muted-d);font-size:.93rem;margin-top:7px;max-width:34ch}
+
+/* ---- Programs ---- */
+.svc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:clamp(46px,5vw,74px)}
+.svc{grid-column:span 2;background:var(--coal-3);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;position:relative;transition:transform .45s var(--ease),border-color .45s,box-shadow .45s var(--ease)}
+.svc:nth-child(4),.svc:nth-child(5){grid-column:span 3}
+.svc:hover{transform:translateY(-7px);border-color:rgba(61,99,255,.55);box-shadow:var(--shadow)}
+.svc .svc-media{aspect-ratio:16/8.4;position:relative;flex:none;border:none;border-radius:0;border-bottom:1px solid var(--line)}
+.svc:nth-child(4) .svc-media,.svc:nth-child(5) .svc-media{aspect-ratio:16/6.2}
+.svc-tag{position:absolute;z-index:5;right:16px;top:16px;font:700 10px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:#fff;background:var(--cobalt);padding:7px 10px;border-radius:2px}
+.svc-body{padding:28px 30px 30px;display:flex;flex-direction:column;gap:14px;flex:1}
+.svc h3{font:700 1.4rem/1.15 var(--body);letter-spacing:-.012em;color:var(--text)}
+.svc .sub{font-family:var(--serif);font-style:italic;color:var(--cobalt-hi);font-size:1.05rem;margin-top:-6px}
+.svc p{color:var(--muted);font-size:.97rem;max-width:46ch}
+.svc .go{margin-top:auto;font:600 11.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--text);display:inline-flex;align-items:center;gap:9px;padding-top:10px}
+.svc .go svg{width:13px;height:13px;color:var(--cobalt-hi);transition:transform .35s var(--ease)}
+.svc:hover .go svg{transform:translateX(5px)}
+.svc .go span{border-bottom:1px solid var(--cobalt);padding-bottom:3px}
+
+/* ---- Community ---- */
+.community{background:linear-gradient(170deg,#121A2E 0%,#0E1322 55%,var(--coal) 100%)}
+.community::before{content:"";position:absolute;inset:0;background:radial-gradient(940px 520px at 88% 112%,rgba(61,99,255,.2),transparent 60%),radial-gradient(700px 420px at 4% -12%,rgba(255,122,69,.08),transparent 55%)}
+.community .wrap{position:relative;z-index:2}
+.community-inner{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(40px,6vw,92px);align-items:center}
+.community h2{font-size:clamp(2.7rem,6.2vw,5.2rem)}
+.community .lede{color:rgba(240,241,238,.78)}
+.pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.pill{font:600 11.5px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(240,241,238,.24);border-radius:999px;padding:12px 19px;color:var(--text);transition:background-color .3s,border-color .3s}
+.pill:hover{background:rgba(61,99,255,.16);border-color:rgba(110,139,255,.6)}
+.community-media{aspect-ratio:4/4.5}
+
+/* ---- Inside FLX ---- */
+.inside{padding:0;background:var(--coal)}
+.inside-stage{position:relative;min-height:78svh;display:flex;align-items:center;isolation:isolate}
+.inside-stage>.media{position:absolute;inset:0;border-radius:0;border:none}
+.inside-stage>.media::after,.inside-stage>.media.has-photo::after{background:linear-gradient(0deg,rgba(11,14,19,.95) 6%,rgba(11,14,19,.55) 50%,rgba(11,14,19,.75) 100%)}
+.inside-stage>.media .cap{display:none}
+.inside-content{position:relative;z-index:3;width:100%;padding:clamp(80px,10vw,140px) 0}
+.inside h2{font-size:clamp(2.9rem,6.6vw,5.6rem);max-width:18ch}
+.inside .lede{max-width:62ch}
+.inside-facets{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:clamp(40px,4.5vw,60px);border-top:1px solid var(--line);padding-top:36px}
+.facet .fk{font:600 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--cobalt-hi)}
+.facet h3{font:700 1.16rem/1.2 var(--body);letter-spacing:-.01em;margin:15px 0 8px}
+.facet p{color:var(--muted);font-size:.94rem;max-width:32ch}
+
+/* ---- Events ---- */
+.sched{margin-top:clamp(46px,5vw,70px);border-top:1px solid var(--line)}
+.srow{display:grid;grid-template-columns:170px 1fr 1.3fr auto;gap:clamp(18px,3vw,44px);align-items:center;padding:32px 22px;border-bottom:1px solid var(--line);position:relative;isolation:isolate;transition:transform .35s var(--ease)}
+.srow::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(61,99,255,.13),rgba(61,99,255,.03));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.srow:hover::before{transform:scaleX(1)}
+.srow:hover{transform:translateX(6px)}
+.srow .when{font:700 11px/1.5 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--cobalt-hi);display:flex;align-items:center;gap:10px}
+.srow .when i{width:7px;height:7px;background:var(--cobalt);transform:rotate(45deg);flex:none}
+.srow h3{font:700 clamp(1.25rem,1.9vw,1.7rem)/1.1 var(--body);letter-spacing:-.015em}
+.srow p{color:var(--muted);font-size:.95rem;max-width:52ch}
+.srow .arr{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--muted);transition:border-color .35s,color .35s,background-color .35s}
+.srow .arr svg{width:15px;height:15px}
+.srow:hover .arr{border-color:var(--cobalt);color:#fff;background:var(--cobalt)}
+.note{margin-top:28px;font:500 12.5px/1.7 var(--body);color:var(--muted);border-left:2px solid var(--cobalt);padding-left:15px;max-width:76ch}
+
+/* ---- Visit ---- */
+.visit-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(32px,4vw,64px);margin-top:clamp(46px,5vw,70px);align-items:stretch}
+.loc-card{border:1px solid var(--line);border-radius:8px;background:linear-gradient(165deg,var(--coal-3),var(--coal-2) 70%);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.loc-card::before{content:"";position:absolute;right:-140px;top:-140px;width:420px;height:420px;background:radial-gradient(circle,rgba(61,99,255,.16),transparent 62%);pointer-events:none}
+.loc-media{aspect-ratio:16/7;border-radius:0;border:none;border-bottom:1px solid var(--line)}
+.loc-body{padding:clamp(30px,3.6vw,44px);display:flex;flex-direction:column;flex:1}
+.loc-k{font:600 11px/1 var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--cobalt-hi);display:flex;align-items:center;gap:12px}
+.loc-k::after{content:"";flex:1;height:1px;background:var(--line)}
+.loc-addr{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(2rem,3.2vw,2.9rem);line-height:.95;margin:24px 0 4px;position:relative}
+.loc-addr small{display:block;font:600 clamp(.98rem,1.3vw,1.15rem)/1.4 var(--body);letter-spacing:.06em;color:var(--muted);text-transform:none;margin-top:11px}
+.loc-rows{margin-top:26px;border-top:1px solid var(--line)}
+.vrow{display:grid;grid-template-columns:110px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.vrow .k{font:600 10.5px/1.6 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.vrow .v{font-size:1.01rem;color:var(--text)}
+.vrow .v a{border-bottom:1px solid var(--cobalt);padding-bottom:2px;transition:color .3s}
+.vrow .v a:hover{color:var(--cobalt-hi)}
+.visit-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:auto;padding-top:30px}
+.form-card{border:1px solid var(--line);border-radius:8px;background:var(--coal-2);padding:clamp(30px,3.6vw,44px)}
+.form-card h3{font:700 1.35rem/1.2 var(--body);letter-spacing:-.01em}
+.form-card .fsub{color:var(--muted);font-size:.95rem;margin:8px 0 26px}
+.cform{display:flex;flex-direction:column;gap:16px}
+.cform label{font:600 10.5px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:9px}
+.cform .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cform input,.cform textarea{width:100%;background:var(--coal-3);border:1px solid var(--line);border-radius:4px;padding:15px 16px;color:var(--text);font:400 15px/1.5 var(--body);transition:border-color .3s,box-shadow .3s}
+.cform input:focus,.cform textarea:focus{outline:none;border-color:var(--cobalt);box-shadow:0 0 0 3px rgba(61,99,255,.16)}
+.cform textarea{min-height:132px;resize:vertical}
+.form-note{font:500 12px/1.7 var(--body);color:var(--muted)}
+.form-note b{color:var(--cobalt-hi);font-weight:600}
+
+/* ---- Final CTA ---- */
+.final{padding:clamp(120px,15vw,210px) 0;text-align:center;background:radial-gradient(1000px 540px at 50% 118%,rgba(61,99,255,.26),transparent 62%),var(--coal)}
+.final .ghost{left:50%;top:50%;transform:translate(-50%,-50%);font-size:clamp(14rem,38vw,34rem);-webkit-text-stroke:1px rgba(240,241,238,.05)}
+.final .glow{position:absolute;left:50%;top:62%;width:700px;height:700px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(61,99,255,.14),transparent 60%);pointer-events:none;animation:glowDrift 10s ease-in-out infinite}
+.final .wrap{position:relative;z-index:2}
+.final h2{font-size:clamp(3.1rem,8.6vw,7.2rem)}
+.final h2 .serif{display:block;font-size:.6em;margin-top:.18em;color:var(--cobalt-hi)}
+.final .lede{margin:28px auto 44px;max-width:52ch}
+.final .hero-actions{justify-content:center;animation:none;opacity:1}
+.final .sub-line{margin-top:36px;font:500 12px/1.6 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* ---- Footer ---- */
+footer{border-top:1px solid var(--line);background:var(--coal-2);padding:74px 0 44px}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px}
+.foot-grid h4{font:600 10.5px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.foot-grid a{display:block;font:500 14px/2.4 var(--body);color:var(--text);transition:color .3s}
+.foot-grid a:hover{color:var(--cobalt-hi)}
+.foot-grid p{color:var(--muted);font-size:.93rem;max-width:34ch;margin-top:16px;line-height:1.7}
+.foot-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:56px;padding-top:28px;font:500 12px/1.6 var(--body);color:var(--muted)}
+
+/* ---- Reveal ---- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.09s}.reveal.d2{transition-delay:.18s}.reveal.d3{transition-delay:.27s}.reveal.d4{transition-delay:.36s}
+
+/* ---- Motion safety ---- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  .reveal{opacity:1;transform:none}
+  .line-mask>span{transform:none;animation:none}
+  .hero-sub,.hero-actions,.hero-proof,.scroll-hint{opacity:1;animation:none}
+  .hero-court .cl,.hero-court .net{stroke-dashoffset:0;animation:none}
+  .hero-court .chase{display:none}
+}
+
+/* ---- Responsive ---- */
+@media (max-width:1080px){
+  .quick-grid{grid-template-columns:repeat(2,1fr)}
+  .quick a{border-bottom:1px solid var(--line)}
+  .quick a:nth-child(2n){border-right:none}
+  .quick a:last-child{grid-column:1/-1;border-right:none}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .svc,.svc:nth-child(4),.svc:nth-child(5){grid-column:span 1}
+  .svc:last-child{grid-column:1/-1}
+  .svc:nth-child(4) .svc-media,.svc:nth-child(5) .svc-media{aspect-ratio:16/8.4}
+  .inside-facets{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .spec-strip{grid-template-columns:1fr 1fr}
+  .spec:nth-child(2n){border-right:none}
+  .srow{grid-template-columns:130px 1fr auto;grid-template-areas:"when title arr" "when desc arr"}
+  .srow .when{grid-area:when}.srow h3{grid-area:title}.srow p{grid-area:desc}.srow .arr{grid-area:arr}
+}
+@media (max-width:900px){
+  nav.links,.nav-cta .btn-ghost{display:none}
+  .burger{display:flex}
+  .hero-court{opacity:.5}.hero-court svg{right:-34%;width:112vw}
+  .hero-court2{display:none}
+  .hero-photo::after{background:linear-gradient(180deg,rgba(11,14,19,.86),rgba(11,14,19,.94))}
+  .facility-lead,.community-inner,.visit-grid{grid-template-columns:1fr}
+  .facility-row{grid-template-columns:1fr}
+  .community-media{aspect-ratio:16/10}
+  .inside-stage{min-height:0}
+}
+@media (max-width:600px){
+  h1.display{font-size:clamp(2.5rem,12.5vw,3.6rem)}
+  .scroll-hint{display:none}
+  .hero{padding:112px 0 64px}
+  .quick-grid{grid-template-columns:1fr}.quick a{border-right:none;min-height:132px;gap:28px}
+  .visit-actions .btn{flex:1;justify-content:center;text-align:center}
+  footer{padding:56px 0 36px}
+  .svc-grid{grid-template-columns:1fr}
+  .inside-facets{grid-template-columns:1fr}
+  .spec-strip{grid-template-columns:1fr}.spec{border-right:none;border-bottom:1px solid var(--line-l);padding-bottom:22px}
+  .foot-grid{grid-template-columns:1fr}
+  .cform .frow{grid-template-columns:1fr}
+  .btn{padding:16px 22px}
+  .hero-actions .btn{flex:1;justify-content:center}
+  .hero-proof div{padding:20px 20px 0 0;margin-right:20px}
+  .srow{grid-template-columns:1fr auto;grid-template-areas:"when arr" "title arr" "desc arr";gap:8px 18px;padding:26px 14px}
+}
+
+/* ---- Brand lockup (nav + footer) ---- */
+.logo{display:flex;align-items:center;gap:12px;line-height:1;position:relative}
+.logo .flx{
+  font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:.06em;color:var(--text);
+  position:relative;transition:color .35s;
+}
+.logo .flx::after{
+  content:"";position:absolute;left:0;right:0;bottom:-5px;height:2px;background:var(--cobalt);
+  transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease);
+}
+.logo:hover .flx::after{transform:scaleX(1)}
+.logo .mark{width:9px;height:9px;background:var(--cobalt);transform:rotate(45deg);flex:none;
+  box-shadow:0 0 12px rgba(61,99,255,.8);transition:transform .5s var(--ease)}
+.logo:hover .mark{transform:rotate(225deg)}
+.logo .lockup{display:flex;flex-direction:column;gap:3px}
+.logo .lockup b{font:700 10.5px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;color:var(--text)}
+.logo .lockup span{font:500 9px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+
+/* ---- Scroll progress ---- */
+.progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:120;
+  background:linear-gradient(90deg,var(--cobalt),var(--cobalt-hi));box-shadow:0 0 12px rgba(61,99,255,.7)}
+
+/* ---- Active nav link ---- */
+nav.links a.active{color:var(--text)}
+nav.links a.active::after{width:100%}
+
+/* ---- Film grain (depth) ---- */
+.grain{position:fixed;inset:0;z-index:95;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+
+/* ---- Hero brand plate ---- */
+.hero-brand{
+  display:flex;align-items:center;gap:clamp(16px,2vw,26px);margin-bottom:clamp(26px,3.5vh,40px);
+  opacity:0;animation:fadeUp .9s var(--ease) .15s forwards;
+}
+.hero-brand .flx-big{
+  font-family:var(--display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(4.2rem,11vw,8.6rem);line-height:.82;letter-spacing:.04em;color:var(--text);
+  text-shadow:0 8px 44px rgba(0,0,0,.5);
+}
+.hero-brand .dot{width:clamp(12px,1.6vw,20px);height:clamp(12px,1.6vw,20px);background:var(--cobalt);
+  transform:rotate(45deg);flex:none;box-shadow:0 0 24px rgba(61,99,255,.95);
+  animation:beat 2.8s ease-in-out infinite;align-self:center}
+@keyframes beat{0%,100%{opacity:1}50%{opacity:.35}}
+.hero-brand .stack{display:flex;flex-direction:column;gap:clamp(4px,.7vw,9px);align-self:center}
+.hero-brand .stack b{font:700 clamp(14px,2vw,22px)/1 var(--body);letter-spacing:.34em;text-transform:uppercase;color:var(--text)}
+.hero-brand .stack span{font:500 clamp(10px,1.3vw,13px)/1 var(--body);letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.hero-brand .stack i{display:block;width:100%;height:1.5px;background:linear-gradient(90deg,var(--cobalt),transparent);margin:2px 0}
+
+/* ---- Connect / social section ---- */
+.connect{background:var(--coal-2);border-top:1px solid var(--line)}
+.connect-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,80px);align-items:center}
+.connect h2{font-size:clamp(2.4rem,5vw,4rem)}
+.social-cards{display:grid;gap:14px}
+.scard{
+  display:flex;align-items:center;gap:20px;padding:26px 28px;border:1px solid var(--line);border-radius:6px;
+  background:var(--coal-3);position:relative;overflow:hidden;
+  transition:transform .4s var(--ease),border-color .4s,box-shadow .4s var(--ease);
+}
+.scard::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(61,99,255,.16),transparent);
+  transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease)}
+.scard:hover{transform:translateX(6px);border-color:rgba(61,99,255,.55);box-shadow:var(--shadow)}
+.scard:hover::before{transform:scaleX(1)}
+.scard>*{position:relative;z-index:2}
+.scard .ic{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:rgba(61,99,255,.14);border:1px solid rgba(61,99,255,.35);color:var(--cobalt-hi)}
+.scard .ic svg{width:22px;height:22px}
+.scard .tx{flex:1}
+.scard .tx b{display:block;font:700 1.08rem/1.2 var(--body);letter-spacing:-.01em}
+.scard .tx span{display:block;font:500 .9rem/1.4 var(--body);color:var(--muted);margin-top:4px}
+.scard .arr{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;
+  color:var(--muted);flex:none;transition:background-color .35s,color .35s,border-color .35s}
+.scard .arr svg{width:14px;height:14px}
+.scard:hover .arr{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+
+/* ---- Mobile sticky booking bar ---- */
+.mbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:98;padding:12px 14px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(11,14,19,.92);backdrop-filter:blur(14px);border-top:1px solid var(--line);
+  gap:10px;transform:translateY(120%);transition:transform .5s var(--ease)}
+.mbar.up{transform:translateY(0)}
+.mbar .btn{flex:1;justify-content:center;padding:15px 12px;font-size:12px}
+
+/* ---- Back to top ---- */
+.totop{position:fixed;right:22px;bottom:22px;z-index:97;width:46px;height:46px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(11,14,19,.8);backdrop-filter:blur(10px);color:var(--text);
+  display:grid;place-items:center;cursor:pointer;opacity:0;pointer-events:none;
+  transition:opacity .4s,transform .4s var(--ease),background-color .35s,border-color .35s}
+.totop.show{opacity:1;pointer-events:auto}
+.totop:hover{background:var(--cobalt);border-color:var(--cobalt);transform:translateY(-3px)}
+.totop svg{width:16px;height:16px}
+
+@media (prefers-reduced-motion:reduce){
+  .media{clip-path:none!important}
+  .hero-brand{opacity:1;animation:none}
+}
+@media (max-width:900px){
+  .connect-inner{grid-template-columns:1fr}
+  .mbar{display:flex}
+  .totop{bottom:84px;right:16px}
+  .logo .flx{font-size:28px}
+  .hero-brand{padding:10px 14px;gap:10px}
+  .hero-brand span{display:none}
+}
+
+/* ---- Hero video ---- */
+.hero-photo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+
+/* ---- Pro Shop ---- */
+.shop{padding:0;background:var(--coal);position:relative}
+.shop-stage{position:relative;min-height:82svh;display:flex;align-items:center;isolation:isolate;overflow:hidden}
+.shop-video{position:absolute;inset:0;z-index:0}
+.shop-video video{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.shop-video::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(11,14,19,.94) 0%,rgba(11,14,19,.72) 40%,rgba(11,14,19,.18) 78%,rgba(11,14,19,.05) 100%)}
+.shop-content{position:relative;z-index:3;width:100%;padding:clamp(72px,9vw,128px) 0}
+.shop-inner{max-width:620px}
+.shop h2{font-size:clamp(2.7rem,6.2vw,5rem)}
+.shop .lede{max-width:52ch}
+.shop-list{display:grid;gap:0;margin-top:clamp(34px,4vw,48px);border-top:1px solid var(--line)}
+.shop-item{display:grid;grid-template-columns:44px 1fr;gap:20px;align-items:start;
+  padding:22px 0;border-bottom:1px solid var(--line)}
+.shop-item .n{font:700 11px/1.6 var(--body);letter-spacing:.18em;color:var(--cobalt-hi)}
+.shop-item h3{font:700 1.06rem/1.3 var(--body);letter-spacing:-.01em;color:var(--text)}
+.shop-item p{color:var(--muted);font-size:.94rem;margin-top:5px;max-width:44ch}
+.shop-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+@media (max-width:900px){
+  .shop-stage{min-height:0}
+  .shop-video::after{background:linear-gradient(180deg,rgba(11,14,19,.86),rgba(11,14,19,.95))}
+  .shop-inner{max-width:none}
+}
+@media (max-width:600px){
+  .shop-actions .btn{flex:1;justify-content:center}
+}
+
+/* ---- Demo Wall ---- */
+.demo{background:var(--coal-2);border-block:1px solid var(--line);padding:clamp(70px,8vw,110px) 0}
+.demo-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(36px,5vw,80px);align-items:center}
+.demo-photo{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);
+  box-shadow:var(--shadow);aspect-ratio:16/8}
+.demo-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform 1.2s var(--ease)}
+.demo-photo:hover img{transform:scale(1.045)}
+.demo-photo::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(11,14,19,.45) 0%,transparent 45%)}
+.demo-photo .dtag{position:absolute;z-index:3;left:18px;bottom:16px;
+  font:700 10.5px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:#fff;
+  background:var(--cobalt);padding:9px 13px;border-radius:3px}
+.demo-copy h2{font-size:clamp(2.2rem,4.6vw,3.6rem)}
+.demo-copy .lede{max-width:46ch}
+.demo-actions{margin-top:30px}
+@media (max-width:900px){
+  .demo-grid{grid-template-columns:1fr;gap:30px}
+  .demo-photo{aspect-ratio:16/9}
+}
+
+/* ---- Stats bar ---- */
+.stats{background:var(--cobalt);padding:clamp(36px,4.5vw,54px) 0;overflow:hidden;position:relative}
+.stats::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--cobalt-deep),var(--cobalt) 40%,var(--cobalt-hi) 100%);opacity:.6}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:2}
+.stat{padding:0 clamp(20px,3vw,44px);border-right:1px solid rgba(255,255,255,.22);text-align:center}
+.stat:last-child{border-right:none}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,4.6vw,4rem);line-height:.9;color:#fff;letter-spacing:.02em}
+.stat span{display:block;font:600 11px/1.5 var(--body);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:10px}
+@media(max-width:700px){.stats-grid{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:none}.stat{padding:18px 0;border-right:none;border-bottom:1px solid rgba(255,255,255,.18)}.stat:last-child{border-bottom:none}}
+
+/* ---- Testimonials ---- */
+.testimonials{background:var(--sand)}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.stars svg{width:17px;height:17px;fill:#F59E0B}
+.t-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:clamp(44px,5vw,66px)}
+.t-feat{grid-column:span 2}
+.tcard{background:#fff;border:1px solid var(--line-l);border-radius:8px;padding:32px 30px;display:flex;flex-direction:column;gap:0;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.tcard:hover{transform:translateY(-5px);box-shadow:0 24px 48px -28px rgba(12,21,27,.3)}
+.tcard .src{font:600 10px/1 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted-d);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.tcard .src svg{width:14px;height:14px}
+.tcard .src .g{color:#4285F4}.tcard .src .f{color:#1877F2}
+.tcard blockquote{font-size:1.01rem;line-height:1.62;color:#1B2A2C;flex:1}
+.tcard blockquote.big{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2vw,1.65rem);line-height:1.35;color:var(--ink)}
+.tcard .who{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line-l)}
+.tcard .who .av{width:38px;height:38px;border-radius:50%;background:var(--cobalt);color:#fff;display:grid;place-items:center;font:700 13px/1 var(--body);flex:none;font-size:13px}
+.tcard .who b{display:block;font:700 .95rem/1.2 var(--body);color:var(--ink)}
+.tcard .who span{display:block;font:500 11px/1.4 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted-d);margin-top:3px}
+@media(max-width:1000px){.t-grid{grid-template-columns:1fr 1fr}.t-feat{grid-column:span 2}}
+@media(max-width:640px){.t-grid{grid-template-columns:1fr}.t-feat{grid-column:span 1}}
+
+/* ---- Pricing ---- */
+.pricing{background:var(--coal)}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:clamp(46px,5vw,70px)}
+.pcard{border:1px solid var(--line);border-radius:8px;padding:clamp(30px,3.8vw,46px);background:var(--coal-3);display:flex;flex-direction:column;gap:0;position:relative;overflow:hidden;transition:border-color .4s,transform .4s var(--ease),box-shadow .4s var(--ease)}
+.pcard::before{content:"";position:absolute;right:-100px;top:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(61,99,255,.18),transparent 65%);pointer-events:none}
+.pcard:hover{border-color:rgba(61,99,255,.5);transform:translateY(-5px);box-shadow:var(--shadow)}
+.pcard.featured{border-color:var(--cobalt);background:linear-gradient(150deg,#131A2F,var(--coal-3) 60%)}
+.pcard.featured::before{background:radial-gradient(circle,rgba(61,99,255,.35),transparent 65%)}
+.pbadge{display:inline-flex;font:700 10px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;background:var(--cobalt);color:#fff;padding:7px 12px;border-radius:3px;margin-bottom:22px;align-self:flex-start}
+.pname{font:700 1.1rem/1.2 var(--body);letter-spacing:-.01em;color:var(--muted)}
+.pprice{font-family:var(--display);font-weight:800;font-size:clamp(3.2rem,6vw,5rem);line-height:.9;color:var(--text);margin:14px 0 4px;letter-spacing:.02em}
+.pprice sub{font-size:.38em;font-weight:700;vertical-align:super;letter-spacing:0;font-family:var(--body)}
+.pprice sup{font-size:.3em;font-family:var(--body);color:var(--muted)}
+.pdesc{color:var(--muted);font-size:.96rem;margin-top:12px;max-width:46ch;line-height:1.62}
+.plist{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:11px;flex:1}
+.plist li{display:flex;align-items:baseline;gap:12px;font-size:.97rem;color:var(--muted)}
+.plist li::before{content:"";width:7px;height:7px;background:var(--cobalt);transform:rotate(45deg);flex:none;margin-top:2px}
+.plist li b{color:var(--text);font-weight:600}
+.pcta{margin-top:30px}
+.pnote{margin-top:clamp(22px,3vw,32px);font:500 12.5px/1.7 var(--body);color:var(--muted);text-align:center;max-width:64ch;margin-left:auto;margin-right:auto}
+@media(max-width:700px){.price-grid{grid-template-columns:1fr}}
+
+
+/* ---- Summer promo note ---- */
+.summer-note{margin-top:clamp(28px,3.5vw,44px);border:1px solid rgba(61,99,255,.35);border-radius:8px;
+  background:linear-gradient(120deg,rgba(61,99,255,.1),rgba(61,99,255,.04));overflow:hidden}
+.summer-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;
+  padding:clamp(26px,3vw,38px) clamp(24px,3vw,40px);flex-wrap:wrap}
+.summer-left{flex:1;min-width:260px}
+.sbadge{display:inline-flex;font:700 10px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;
+  background:rgba(61,99,255,.2);color:var(--cobalt-hi);border:1px solid rgba(61,99,255,.35);
+  padding:7px 12px;border-radius:3px;margin-bottom:14px}
+.summer-left h3{font:700 1.2rem/1.25 var(--body);letter-spacing:-.01em;color:var(--text);margin-bottom:10px}
+.summer-left p{color:var(--muted);font-size:.95rem;max-width:62ch;line-height:1.65}
+@media(max-width:700px){.summer-inner{flex-direction:column;align-items:flex-start}}
+
+
+/* ---- Explore cards ---- */
+.explore-card{display:flex;flex-direction:column;gap:13px;padding:32px 28px;border:1px solid var(--line);border-radius:6px;background:var(--coal-3);text-decoration:none;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s var(--ease)}
+.explore-card:hover{transform:translateY(-6px);border-color:rgba(61,99,255,.5);box-shadow:var(--shadow)}
+.ec-label{font:600 11px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--cobalt-hi)}
+.ec-title{font:700 1.35rem/1.15 var(--body);color:var(--text)}
+.ec-desc{font:500 .95rem/1.6 var(--body);color:var(--muted)}
+.ec-go{margin-top:auto;font:600 11.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--text);border-bottom:1px solid var(--cobalt);padding-bottom:3px;align-self:flex-start}
+@media(max-width:900px){.explore-card{grid-column:span 1}}
+
+
+/* ---- Brightness pass (videos + heroes) ---- */
+#heroVideo{filter:brightness(1.45) contrast(1.06) saturate(1.08)}
+.hero-photo::after{background:linear-gradient(180deg,rgba(11,14,19,.42) 0%,rgba(11,14,19,.62) 100%)!important}
+</style>
+
+<style>
+/* ============ MOBILE OPTIMIZATION PASS ============ */
+@media (max-width: 820px){
+
+  /* ---- Collapse ALL inline multi-column grids to single column ---- */
+  div[style*="grid-template-columns:repeat(4,1fr)"],
+  div[style*="grid-template-columns:repeat(3,1fr)"],
+  div[style*="grid-template-columns:1.1fr .9fr"],
+  div[style*="grid-template-columns:1.06fr .94fr"],
+  div[style*="grid-template-columns: 1.1fr .9fr"]{
+    grid-template-columns:1fr!important;
+    gap:14px!important;
+  }
+
+  /* Small stat blocks (tournaments page) can stay 2-up */
+  div[style*="grid-template-columns:1fr 1fr"][style*="gap:14px"]{
+    grid-template-columns:1fr 1fr!important;
+  }
+
+  /* ---- Evolution grid photos need a height on mobile ---- */
+  div[style*="cursor:zoom-in"][style*="flex:1"]{
+    aspect-ratio:4/3!important;
+    min-height:150px!important;
+  }
+
+  /* ---- Page heroes: tighter, readable ---- */
+  .page-hero{min-height:0!important;padding:104px 0 54px!important}
+  .page-hero h1{font-size:clamp(2.3rem,11vw,3.4rem)!important}
+  .page-hero .lede{font-size:1rem!important}
+  .page-hero-bg::after{
+    background:linear-gradient(180deg,rgba(11,14,19,.9) 0%,rgba(11,14,19,.94) 100%)!important;
+  }
+
+  /* ---- Homepage hero brand: scale down the big FLX ---- */
+  .hero-brand .flx-big{font-size:clamp(3rem,17vw,4.6rem)!important}
+  .hero-brand{gap:14px!important;flex-wrap:wrap}
+  h1.display{font-size:clamp(2rem,9.5vw,3.2rem)!important}
+
+  /* ---- Sections: tighter vertical rhythm ---- */
+  section, .demo{padding-top:clamp(52px,10vw,70px)!important;padding-bottom:clamp(52px,10vw,70px)!important}
+  .head .display,h2.display{font-size:clamp(1.9rem,8.5vw,2.8rem)!important}
+  .lede{font-size:1rem!important}
+
+  /* ---- Buttons: comfortable tap targets, wrap nicely ---- */
+  .btn{padding:15px 22px!important;font-size:12px!important;width:auto}
+  .hero-actions{gap:10px!important}
+  .hero-actions .btn{flex:1 1 auto;justify-content:center;min-width:150px}
+
+  /* ---- Pricing cards ---- */
+  .pcard{padding:26px 22px!important}
+  .pprice{font-size:2.9rem!important}
+
+  /* ---- Accordion (pro shop) ---- */
+  .shop-cat-header{padding:18px 18px!important}
+  .cat-body{padding:0 18px 18px!important}
+  .cat-left h3{font-size:1rem!important}
+  .cat-count{font-size:10px!important;letter-spacing:.08em!important}
+  .cat-item span{font-size:.88rem!important}
+  .cat-item b{font-size:.85rem!important}
+
+  /* ---- Coach cards ---- */
+  .coach-photo{aspect-ratio:4/3.4!important}
+
+  /* ---- Visit / contact ---- */
+  .loc-addr{font-size:1.8rem!important}
+  .vrow{grid-template-columns:1fr!important;gap:5px!important;padding:13px 0!important}
+  .form-card{padding:24px 20px!important}
+
+  /* ---- Insurance cards: stack ---- */
+  a[style*="display:flex"][style*="padding:20px 18px"]{padding:16px 15px!important}
+
+  /* ---- Summer note ---- */
+  .summer-inner{flex-direction:column;align-items:flex-start!important}
+
+  /* ---- Stats bar ---- */
+  .stat b{font-size:2rem!important}
+  .stat span{font-size:9.5px!important;letter-spacing:.14em!important}
+
+  /* ---- Explore cards on homepage ---- */
+  .explore-card{padding:24px 20px!important}
+  .ec-title{font-size:1.15rem!important}
+
+  /* ---- Tables / pricing rows ---- */
+  .pp-row{padding:14px 16px!important}
+  .pp-row span{font-size:.88rem!important}
+  .pp-row strong{font-size:.95rem!important}
+  .pp-cta{padding:16px;flex-direction:column}
+  .pp-cta .btn{width:100%;justify-content:center}
+
+  /* ---- Schedule rows ---- */
+  .srow h3{font-size:1.1rem!important}
+  .srow p{font-size:.87rem!important}
+
+  /* ---- Wrap padding ---- */
+  .wrap{padding-inline:18px!important}
+
+  /* ---- Lightbox caption smaller ---- */
+  #lb-cap{font-size:9px!important;letter-spacing:.12em!important;max-width:88vw;white-space:normal!important;text-align:center}
+}
+
+@media (max-width: 420px){
+  .hero-brand .flx-big{font-size:2.7rem!important}
+  h1.display{font-size:1.85rem!important}
+  .page-hero h1{font-size:2.1rem!important}
+  .stat b{font-size:1.7rem!important}
+  .btn{min-width:0!important;width:100%!important;justify-content:center}
+  .hero-actions{flex-direction:column}
+}
+</style>
+<style>
+/* ---- Burger always available ---- */
+.burger{display:flex!important}
+</style>
+
+<style>
+/* ── Mobile nav: hide nav-cta entirely, burger handles everything ── */
+@media(max-width:900px){
+  .nav-cta{display:none!important}
+  .sb-burger{display:flex!important}
+}
+@media(min-width:901px){
+  .sb-burger{display:none!important}
+}
+</style>
+<style>
+/* ═══ TARGET OVERFLOW CULPRITS ON MOBILE ═══ */
+@media (max-width: 900px) {
+  /* Glow/gradient decorative elements - clip them */
+  .glow, .hero-glow, [style*="right:-100"], [style*="right:-140"] {
+    display: none !important;
+  }
+  /* Radial gradient pseudo-elements that extend beyond viewport */
+  .pcard::before {
+    display: none !important;
+  }
+  /* Hero court SVG lines that extend right */
+  .hero-court, .hero-court2 {
+    overflow: hidden !important;
+    max-width: 100vw !important;
+  }
+  .hero-court svg {
+    right: 0 !important;
+    width: 100vw !important;
+  }
+  /* Inner page hero background */
+  .page-hero {
+    overflow: hidden !important;
+  }
+  .page-hero-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+  /* Schedule rows that might overflow */
+  .srow {
+    grid-template-columns: 1fr auto !important;
+    grid-template-areas: "when arr" "title arr" "desc arr" !important;
+    overflow: hidden !important;
+  }
+  /* Any inner final section glows */
+  .inner-final .glow {
+    display: none !important;
+  }
+  /* Wrap must be 100% */
+  .wrap {
+    width: 100% !important;
+    padding-inline: 18px !important;
+    overflow: hidden !important;
+  }
+  /* Stats bar */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .stat {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,.15) !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="FLX Pickleball Club — home">
+      <span class="flx">FLX</span>
+      <i class="mark" aria-hidden="true"></i>
+      <span class="lockup"><b>Pickleball</b><span>Club</span></span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="index.html">Home</a><a href="play.html">Play</a><a href="tournaments.html">Events</a><a href="pro-shop.html">Pro Shop</a><a href="membership.html">Membership</a><a href="about.html">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="tel:6077352965">607-735-2965</a>
+      <a class="btn btn-primary" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener" target="_blank" rel="noopener">Book a Court
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="play.html">Play</a>
+  <a href="tournaments.html">Events</a>
+  <a href="pro-shop.html">Pro Shop</a>
+  <a href="membership.html">Membership</a>
+  <a href="about.html">About</a>
+  <a class="btn btn-primary" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener" style="margin-top:10px">Book a Court</a>
+  <a class="btn btn-ghost" href="tel:6077352965" style="margin-top:8px;justify-content:center">607-735-2965</a>
+</div>
+
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<section class="hero" aria-label="Intro">
+  <div class="hero-photo" aria-hidden="true">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto"
+      poster="public/images/flx/hero-poster.jpg"
+      aria-hidden="true">
+      <source src="public/video/hero.webm" type="video/webm">
+      <source src="public/video/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-floor" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-court2" id="heroCourt2" aria-hidden="true">
+    <svg viewBox="0 0 440 900" fill="none">
+      <rect x="20" y="10" width="400" height="880" rx="6" stroke-width="1.4"/>
+      <line x1="20" y1="450" x2="420" y2="450" stroke-width="1.4"/>
+      <line x1="20" y1="310" x2="420" y2="310" stroke-width="1"/>
+      <line x1="20" y1="590" x2="420" y2="590" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="hero-court" id="heroCourt" aria-hidden="true">
+    <svg viewBox="0 0 440 900" fill="none">
+      <rect class="cl" x="20" y="10" width="400" height="880" rx="6" stroke-width="2"/>
+      <line class="net" x1="20" y1="450" x2="420" y2="450" stroke-width="3.2"/>
+      <line class="cl d1" x1="20" y1="310" x2="420" y2="310" stroke-width="1.6"/>
+      <line class="cl d1" x1="20" y1="590" x2="420" y2="590" stroke-width="1.6"/>
+      <line class="cl d2" x1="220" y1="10" x2="220" y2="310" stroke-width="1.6"/>
+      <line class="cl d2" x1="220" y1="590" x2="220" y2="890" stroke-width="1.6"/>
+      <rect class="chase" x="20" y="10" width="400" height="880" rx="6"/>
+    </svg>
+  </div>
+  <div class="hero-sweep" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-inner" id="heroInner">
+      <div class="hero-brand">
+        <span class="flx-big">FLX</span>
+        <i class="dot" aria-hidden="true"></i>
+        <div class="stack">
+          <b>Pickleball Club</b>
+          <i aria-hidden="true"></i>
+          <span>Horseheads, New York</span>
+        </div>
+      </div>
+      <h1 class="display">
+        <span class="line-mask l1"><span>Six courts.</span></span>
+        <span class="line-mask l2"><span>One community.</span></span>
+        <span class="line-mask l3"><span class="accent">Your place to play.</span></span>
+      </h1>
+      <p class="hero-sub">Six indoor courts in Horseheads, open seven days a week. <strong>Drop-in open play, court rentals, lessons, and events</strong> — for every age and every level.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener" target="_blank" rel="noopener">Book a Court
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="play.html">View Programs</a>
+      </div>
+      <div class="hero-proof">
+        <div><b>6 Indoor Courts</b><span>PickleRoll surfaces</span></div>
+        <div><b>Open 7 Days</b><span>Play &amp; rentals</span></div>
+        <div><b>Lessons &amp; Events</b><span>All levels</span></div>
+        <div><b>Horseheads, NY</b><span>3300 Chambers Rd</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><span class="bar"></span>Scroll</div>
+</section>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span>Open 7 days a week <i></i></span><span>6 indoor PickleRoll courts <i></i></span><span>C&amp;D competition nets <i></i></span><span>Open play daily <i></i></span><span>Court rentals <i></i></span><span>Lessons &amp; clinics <i></i></span><span>Tournaments &amp; events <i></i></span><span>Horseheads, NY <i></i></span>
+  </div>
+</div>
+
+
+<!-- ===== STATS BAR ===== -->
+<div class="stats" aria-label="Club at a glance">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><b>6</b><span>Indoor Courts</span></div>
+      <div class="stat"><b>7</b><span>Days a Week</span></div>
+      <div class="stat"><b>$15</b><span>Members / Month</span></div>
+      <div class="stat"><b>All</b><span>Ages &amp; Levels</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUICK ACTIONS ===== -->
+<section class="quick" aria-label="Quick actions">
+  <div class="wrap">
+    <div class="quick-grid">
+      <a class="reveal" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener"><span class="num">01 / Reserve</span><h3>Book a Court <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3></a>
+      <a class="reveal d1" href="play.html"><span class="num">02 / Daily</span><h3>Join Open Play <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3></a>
+      <a class="reveal d2" href="play.html"><span class="num">03 / Improve</span><h3>Take a Lesson <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3></a>
+      <a class="reveal d3" href="tournaments.html"><span class="num">04 / Compete</span><h3>View Events <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3></a>
+      <a class="reveal d4" href="about.html"><span class="num">05 / Say hello</span><h3>Contact FLX <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FACILITY ===== -->
+<section class="light" id="facility">
+  <span class="ghost" style="right:-2%;top:6%" aria-hidden="true">COURTS</span>
+  <div class="wrap">
+    <div class="facility-lead">
+      <div class="head reveal">
+        <p class="eyebrow"><span class="idx">01</span> The Facility</p>
+        <h2 class="display">Six courts.<br>Zero compromises.</h2>
+      </div>
+      <p class="lede reveal d1">A lot of indoor pickleball is borrowed space — taped lines on a gym floor, portable nets, leftover hours. FLX was built the other way around: a dedicated indoor club where everything is set up for the game.</p>
+    </div>
+
+    <figure class="media m-a facility-hero reveal" data-img="facility">
+      <div class="art" aria-hidden="true"></div>
+      <div class="lines" aria-hidden="true"><svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice"><rect x="60" y="40" width="330" height="370" rx="4" stroke-width="1.4"/><line x1="60" y1="225" x2="390" y2="225" stroke-width="1.8"/><line x1="60" y1="150" x2="390" y2="150"/><line x1="60" y1="300" x2="390" y2="300"/><rect x="450" y="40" width="330" height="370" rx="4" stroke-width="1.4"/><line x1="450" y1="225" x2="780" y2="225" stroke-width="1.8"/><line x1="450" y1="150" x2="780" y2="150"/><line x1="450" y1="300" x2="780" y2="300"/></svg></div>
+      <figcaption class="cap">The main court floor — 3300 Chambers Rd, Horseheads</figcaption>
+    </figure>
+
+    <div class="facility-row">
+      <figure class="media m-b reveal" data-img="facilityDetail">
+        <div class="art" aria-hidden="true"></div>
+        <div class="lines" aria-hidden="true"><svg viewBox="0 0 400 330" preserveAspectRatio="xMidYMid slice"><line x1="0" y1="165" x2="400" y2="165" stroke-width="2"/><line x1="0" y1="95" x2="400" y2="95"/><line x1="0" y1="235" x2="400" y2="235"/><line x1="200" y1="0" x2="200" y2="95"/></svg></div>
+        <figcaption class="cap">PickleRoll surfaces, C&amp;D Competition nets</figcaption>
+      </figure>
+      <figure class="media m-a reveal d1" data-img="facilityOpenPlay">
+        <div class="art" aria-hidden="true"></div>
+        <div class="lines" aria-hidden="true"><svg viewBox="0 0 400 330" preserveAspectRatio="xMidYMid slice"><rect x="70" y="30" width="260" height="270" rx="4" stroke-width="1.4"/><line x1="70" y1="165" x2="330" y2="165" stroke-width="1.8"/></svg></div>
+        <figcaption class="cap">Open play, every day of the week</figcaption>
+      </figure>
+      <figure class="media m-c reveal d2" data-img="facilityCommunity">
+        <div class="art" aria-hidden="true"></div>
+        <div class="lines" aria-hidden="true"><svg viewBox="0 0 400 330" preserveAspectRatio="xMidYMid slice"><line x1="0" y1="240" x2="400" y2="240" stroke-width="2"/><line x1="0" y1="120" x2="400" y2="120"/></svg></div>
+        <figcaption class="cap">Between games at the club</figcaption>
+      </figure>
+    </div>
+
+    <div class="spec-strip">
+      <div class="spec reveal"><div class="k">6</div><h3>PickleRoll courts</h3><p>Cushioned professional surfaces with a true, consistent bounce.</p></div>
+      <div class="spec reveal d1"><div class="k">C&amp;D</div><h3>Competition nets</h3><p>Regulation, tournament-grade nets on all six courts.</p></div>
+      <div class="spec reveal d2"><div class="k">7</div><h3>Days a week</h3><p>Open play and rentals every day. Indoors, the season never ends.</p></div>
+      <div class="spec reveal d3"><div class="k">All</div><h3>Ages &amp; levels</h3><p>First rally or tournament Sunday — this floor is for both.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMMUNITY ===== -->
+<section class="community" id="community">
+  <div class="wrap">
+    <div class="community-inner">
+      <div class="reveal">
+        <p class="eyebrow" style="color:rgba(240,241,238,.68)"><span class="idx">05</span> The Club</p>
+        <h2 class="display">Built by players, <span class="serif">for players.</span></h2>
+        <p class="lede">Regulars who save you a spot in rotation. Rivals who become doubles partners. Beginners who walk in nervous on a Tuesday and leave with a standing game. That's the club — and everyone gets the same welcome.</p>
+        <div class="pill-row" aria-label="Community highlights">
+          <span class="pill">Beginner friendly</span><span class="pill">Competitive play</span><span class="pill">Seniors welcome</span><span class="pill">Family court time</span><span class="pill">Local &amp; independent</span>
+        </div>
+      </div>
+      <figure class="media m-c community-media reveal d2" data-img="community">
+        <div class="art" aria-hidden="true"></div>
+        <div class="lines" aria-hidden="true"><svg viewBox="0 0 400 450" preserveAspectRatio="xMidYMid slice"><rect x="50" y="40" width="300" height="370" rx="4" stroke-width="1.4"/><line x1="50" y1="225" x2="350" y2="225" stroke-width="1.8"/><line x1="50" y1="150" x2="350" y2="150"/><line x1="50" y1="300" x2="350" y2="300"/></svg></div>
+        <figcaption class="cap">Between points at FLX</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSIDE FLX ===== -->
+<section class="inside" id="inside" aria-label="Inside FLX">
+  <div class="inside-stage">
+    <div class="media m-a" data-img="inside" aria-hidden="true">
+      <div class="art"></div>
+      <div class="lines"><svg viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice"><rect x="180" y="80" width="480" height="640" rx="6" stroke-width="1.6"/><line x1="180" y1="400" x2="660" y2="400" stroke-width="2"/><line x1="180" y1="270" x2="660" y2="270"/><line x1="180" y1="530" x2="660" y2="530"/><rect x="760" y="80" width="480" height="640" rx="6" stroke-width="1.6"/><line x1="760" y1="400" x2="1240" y2="400" stroke-width="2"/><line x1="760" y1="270" x2="1240" y2="270"/><line x1="760" y1="530" x2="1240" y2="530"/></svg></div>
+    </div>
+    <div class="inside-content">
+      <div class="wrap">
+        <p class="eyebrow reveal" style="color:rgba(240,241,238,.72)"><span class="idx">06</span> Inside FLX</p>
+        <h2 class="display reveal d1">More than a place to play. <span class="serif">A place to belong.</span></h2>
+        <p class="lede reveal d2">Walk in on a busy evening and you'll hear it before you see it — rallies, laughter between points, someone waving you into the next game. Serious courts, a welcoming crowd, one indoor home for the sport.</p>
+        <div class="inside-facets">
+          <div class="facet reveal"><div class="fk">Energy</div><h3>The open-play buzz</h3><p>A steady rotation of games where everyone gets on court.</p></div>
+          <div class="facet reveal d1"><div class="fk">Standard</div><h3>Courts built for real play</h3><p>Six PickleRoll surfaces, C&amp;D nets, honest bounce.</p></div>
+          <div class="facet reveal d2"><div class="fk">Growth</div><h3>Coaching &amp; competition</h3><p>Lessons, clinics, and events that move your game forward.</p></div>
+          <div class="facet reveal d3"><div class="fk">Home</div><h3>A local club</h3><p>Independent, welcoming, and proudly rooted in the region.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== EXPLORE ===== -->
+<section style="padding:clamp(72px,8vw,110px) 0;background:var(--coal-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head split reveal" style="position:relative;z-index:2">
+      <div>
+        <p class="eyebrow"><span class="idx">·</span> Everything FLX</p>
+        <h2 class="display">Explore the club.</h2>
+      </div>
+      <p class="lede" style="margin-top:0">Six courts, a pro shop, professional coaching, tournaments, and a community that shows up every day.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(40px,5vw,64px)">
+      <a href="play.html" class="explore-card reveal"><span class="ec-label">Play</span><span class="ec-title">Open Play, Rentals &amp; Lessons</span><span class="ec-desc">Drop in any day, book a private court, or work with one of our coaches.</span><span class="ec-go">Explore &rarr;</span></a>
+      <a href="tournaments.html" class="explore-card reveal d1"><span class="ec-label">Compete</span><span class="ec-title">Tournaments &amp; Events</span><span class="ec-desc">4–6 full tournaments per year plus round robins, mixers, and special events.</span><span class="ec-go">Explore &rarr;</span></a>
+      <a href="pro-shop.html" class="explore-card reveal d2"><span class="ec-label">Shop</span><span class="ec-title">Pro Shop &amp; Demo Paddles</span><span class="ec-desc">Paddles, balls, apparel, and premium demo rentals — all in the club.</span><span class="ec-go">Explore &rarr;</span></a>
+      <a href="membership.html" class="explore-card reveal"><span class="ec-label">Membership</span><span class="ec-title">Pricing &amp; Membership</span><span class="ec-desc">$15/month member pricing. Discounted rates on everything. No commitment.</span><span class="ec-go">Explore &rarr;</span></a>
+      <a href="about.html" class="explore-card reveal d1"><span class="ec-label">About</span><span class="ec-title">About FLX &amp; Visit Us</span><span class="ec-desc">Our story, location, hours, and contact. Come see the courts for yourself.</span><span class="ec-go">Explore &rarr;</span></a>
+      <a href="https://www.facebook.com/FLXPickleballClub" target="_blank" rel="noopener" class="explore-card reveal d2"><span class="ec-label">Follow</span><span class="ec-title">FLX on Facebook</span><span class="ec-desc">Events, announcements, photos, and community updates.</span><span class="ec-go">Follow us &rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials light" aria-label="What players say">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow"><span class="idx">·</span> What Players Are Saying</p>
+      <h2 class="display">Real people.<br><span class="serif">Real reviews.</span></h2>
+    </div>
+    <div class="t-grid">
+      <!-- Featured large quote -->
+      <div class="tcard t-feat reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="src"><svg viewBox="0 0 24 24" fill="currentColor" class="g" aria-label="Google review"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google Review</span>
+        <blockquote class="big">"Best facility around to play pickleball. Your whole family, from kids to grandparents, can enjoy the awesome sport of pickleball here."</blockquote>
+        <div class="who"><span class="av">EH</span><div><b>Emily Hafler</b><span>Google · 5 stars</span></div></div>
+      </div>
+      <!-- Side quote -->
+      <div class="tcard reveal d1">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="src"><svg viewBox="0 0 24 24" fill="currentColor" class="g"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google Review</span>
+        <blockquote>"Great beginner experience. Came with my wife on a date night. The owners were kind enough to play with us so we could get used to doubles. Very thorough education. Beautiful courts. Will definitely be back."</blockquote>
+        <div class="who"><span class="av">MS</span><div><b>Matthew Simone</b><span>Google · 5 stars</span></div></div>
+      </div>
+      <div class="tcard reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="src"><svg viewBox="0 0 24 24" fill="currentColor" class="g"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google Review</span>
+        <blockquote>"Fantastic establishment, family owned, plenty of space and equipment. Great for groups or a date. The woman who checked us out gave us tips and lessons and was very kind and professional."</blockquote>
+        <div class="who"><span class="av">CM</span><div><b>Chachi Macho</b><span>Google · 5 stars</span></div></div>
+      </div>
+      <div class="tcard reveal d1">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="src"><svg viewBox="0 0 24 24" fill="currentColor" class="f" aria-label="Facebook review"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> Facebook</span>
+        <blockquote>"Friendly, clean and spacious — great facility — solid selection of demo paddles. Vibe is fun — music, social events and tourneys."</blockquote>
+        <div class="who"><span class="av">DA</span><div><b>Dre Alary</b><span>Facebook · Recommends FLX</span></div></div>
+      </div>
+      <div class="tcard reveal d2">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="src"><svg viewBox="0 0 24 24" fill="currentColor" class="f"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> Facebook</span>
+        <blockquote>"We had family in from out of town and were looking for a fun, indoor activity for the kids. We all had a great time and Scott took the time to teach us the rules and how to play. Well spent afternoon!"</blockquote>
+        <div class="who"><span class="av">AR</span><div><b>Amanda Ruth</b><span>Google · 5 stars</span></div></div>
+      </div>
+      <div class="tcard reveal d1">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="src"><svg viewBox="0 0 24 24" fill="currentColor" class="f"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> Facebook</span>
+        <blockquote>"Awesome spot for all levels of play, good community."</blockquote>
+        <div class="who"><span class="av">KH</span><div><b>Kray Hubner</b><span>Facebook · Recommends FLX</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final" aria-label="Get started">
+  <span class="ghost" aria-hidden="true">FLX</span>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow reveal" style="justify-content:center">Ready when you are</p>
+    <h2 class="display reveal d1">Your court is waiting.<span class="serif">Find your next game at FLX.</span></h2>
+    <p class="lede reveal d2">Book a court, join open play, or stop in and watch a few games. We'll see you on the court.</p>
+    <div class="hero-actions reveal d3">
+      <a class="btn btn-primary" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener" target="_blank" rel="noopener">Get Started on CourtReserve
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="tel:6077352965">Call 607-735-2965</a>
+    </div>
+    <p class="sub-line reveal d4">3300 Chambers Rd, Horseheads, NY · Open 7 days a week</p>
+  </div>
+</section>
+
+
+<!-- ===== GRAIN ===== -->
+<div class="grain" aria-hidden="true"></div>
+<!-- ===== SCROLL PROGRESS ===== -->
+<div class="progress" id="progress" aria-hidden="true"></div>
+<!-- ===== STICKY MOBILE BAR ===== -->
+<div class="mbar" id="mbar">
+  <a class="btn btn-primary" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener" target="_blank" rel="noopener">Book a Court
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <a class="btn btn-ghost" href="tel:6077352965">Call Us</a>
+</div>
+<!-- ===== BACK TO TOP ===== -->
+<button class="totop" id="totop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="logo"><span class="flx">FLX</span><i class="mark" aria-hidden="true"></i><span class="lockup"><b>Pickleball</b><span>Club</span></span></a>
+        <p>The indoor home of pickleball in the Horseheads–Elmira region. Six PickleRoll courts, open seven days a week, for every age and level.</p>
+      </div>
+      <div><h4>Play</h4>
+        <a href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">Book a Court</a>
+        <a href="play.html">Open Play</a><a href="play.html">Court Rentals</a><a href="play.html">Lessons &amp; Clinics</a></div>
+      <div><h4>Club</h4>
+        <a href="#facility">The Facility</a><a href="#shop">Pro Shop</a><a href="#inside">Inside FLX</a><a href="tournaments.html">Tournaments &amp; Events</a>
+        <a href="https://www.facebook.com/FLXPickleballClub" target="_blank" rel="noopener">Facebook</a></div>
+      <div><h4>Visit</h4>
+        <a href="https://www.google.com/maps/search/?api=1&query=3300+Chambers+Rd+Horseheads+NY+14845" target="_blank" rel="noopener">3300 Chambers Rd,<br>Horseheads, NY 14845</a>
+        <a href="tel:6077352965">607-735-2965</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 FLX Pickleball Club. All rights reserved.</span>
+      <span>Horseheads, New York</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================================
+   FLX IMAGE MAP — the only place you touch to add photos.
+   1. Save approved, FLX-owned photos into:  public/images/flx/
+   2. Use the exact filenames below (or edit the paths here to match yours).
+   3. Photos appear automatically with proper overlay + caption.
+      Missing files fall back to the designed gradient — no broken images,
+      no filler text.
+   Recommended: JPG, ~1600–2000px wide (hero/inside), <400KB each.
+   ========================================================================== */
+/* Optional per-photo 'pos' controls the crop focal point (CSS object-position).
+   Default keeps focus slightly above center so faces and net tape stay in frame. */
+const FLX_IMAGES = {
+  facility:         {src:'public/images/flx/facility-main.jpg',      alt:'The indoor court floor at FLX Pickleball Club',                                pos:'50% 58%'},
+  facilityDetail:   {src:'public/images/flx/court-net-detail.jpg',   alt:'Court surfaces and nets across the floor at FLX Pickleball Club',             pos:'50% 52%'},
+  facilityOpenPlay: {src:'public/images/flx/open-play.jpg',          alt:'Players mid-rally at the net during open play at FLX Pickleball Club',        pos:'50% 46%'},
+  facilityCommunity:{src:'public/images/flx/community-courtside.jpg',alt:'Players together courtside between games at FLX Pickleball Club',             pos:'50% 32%'},
+  progOpenPlay:     {src:'public/images/flx/program-open-play.jpg',  alt:'A doubles game during open play at FLX Pickleball Club',                      pos:'50% 55%'},
+  progRentals:      {src:'public/images/flx/program-rentals.jpg',    alt:'A game underway on a court at FLX Pickleball Club',                           pos:'50% 52%'},
+  progLessons:      {src:'public/images/flx/program-lessons.jpg',    alt:'A coach running a junior clinic on court at FLX Pickleball Club',             pos:'50% 55%'},
+  progEvents:       {src:'public/images/flx/program-events.jpg',     alt:'Tournament medal winners at FLX Pickleball Club',                             pos:'50% 42%'},
+  progMembership:   {src:'public/images/flx/program-community.jpg',  alt:'The FLX Pickleball Club community gathered for a holiday event',              pos:'50% 48%'},
+  community:        {src:'public/images/flx/community-between-games.jpg', alt:'Players between games at FLX Pickleball Club',                                pos:'50% 36%'},
+  inside:           {src:'public/images/flx/inside-evening.jpg',     alt:'A club event with the FLX Pickleball Club community on the courts',           pos:'50% 48%'},
+  entrance:         {src:'public/images/flx/entrance.jpg',           alt:'The entrance to FLX Pickleball Club at 3300 Chambers Rd, Horseheads, NY',     pos:'50% 50%'}
+};
+
+/* Load mapped images into their slots; designed gradient remains if a file is absent */
+document.querySelectorAll('[data-img]').forEach(el=>{
+  const cfg=FLX_IMAGES[el.dataset.img]; if(!cfg) return;
+  const img=document.createElement('img');
+  img.className='photo';
+  img.alt=cfg.alt;
+  img.decoding='async';
+  img.loading = (el.dataset.img==='hero' || el.dataset.img==='facility') ? 'eager' : 'lazy';
+  img.style.objectPosition = cfg.pos || '50% 42%';
+  img.addEventListener('load', ()=>el.classList.add('has-photo'));
+  img.addEventListener('error', ()=>img.remove());
+  img.src=cfg.src;
+  el.prepend(img);          /* in the DOM from the start, so lazy-loading works */
+});
+
+/* Seamless ticker loop */
+const track=document.getElementById('tickerTrack');if(track)track.innerHTML+=track.innerHTML;
+
+/* Nav scroll state */
+const header=document.getElementById('header');
+const onScroll=()=>{if(header)header.classList.toggle('scrolled',window.scrollY>24)};
+onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+/* Mobile menu */
+const burger=document.getElementById('burger'),menu=document.getElementById('mobileMenu');
+const closeMenu=()=>{document.body.classList.remove('menu-open');menu.classList.remove('open');burger.setAttribute('aria-expanded','false')};
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');document.body.classList.toggle('menu-open',o);burger.setAttribute('aria-expanded',String(o))});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+
+/* Scroll reveals */
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Layered hero parallax: scroll + gentle pointer drift (desktop, motion-safe) */
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const desktop=window.matchMedia('(min-width:900px)').matches;
+const court=document.getElementById('heroCourt'),court2=document.getElementById('heroCourt2'),inner=document.getElementById('heroInner');
+let sy=0,mx=0,my=0,raf=null;
+function applyHero(){
+  if(court)court.style.transform=`translate(${mx*14}px,${sy*0.07+my*10}px)`;
+  if(court2)court2.style.transform=`translate(${mx*26}px,${sy*0.12+my*18}px)`;
+  if(inner)inner.style.transform=`translate(${mx*-6}px,${my*-4}px)`;
+  raf=null;
+}
+function queueHero(){if(!raf)raf=requestAnimationFrame(applyHero)}
+if(!reduce&&desktop){
+  window.addEventListener('scroll',()=>{sy=Math.min(window.scrollY,window.innerHeight);queueHero()},{passive:true});
+  document.querySelector('.hero')?.addEventListener('pointermove',e=>{
+    mx=(e.clientX/window.innerWidth-.5);my=(e.clientY/window.innerHeight-.5);queueHero();
+  },{passive:true});
+}
+
+/* === PREMIUM CHROME === */
+
+/* Scroll progress bar */
+const prog=document.getElementById('progress');
+const mbar=document.getElementById('mbar');
+const totop=document.getElementById('totop');
+let heroH=0;
+function chromeTick(){
+  const scrollY=window.scrollY,docH=document.documentElement.scrollHeight-window.innerHeight;
+  if(prog) prog.style.width=(docH>0?Math.min(100,scrollY/docH*100):0)+'%';
+  if(mbar)  mbar.classList.toggle('up',scrollY>120);
+  if(totop) totop.classList.toggle('show',scrollY>600);
+  if(!heroH) heroH=document.querySelector('.hero')?.offsetHeight||0;
+}
+window.addEventListener('scroll',chromeTick,{passive:true}); chromeTick();
+totop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* Pro shop video: play only when visible (saves bandwidth) */
+const shopVid=document.getElementById('shopVideo');
+if(shopVid){
+  const shopObs=new IntersectionObserver(es=>{
+    es.forEach(e=> e.isIntersecting ? shopVid.play().catch(()=>{}) : shopVid.pause());
+  },{threshold:.15});
+  shopObs.observe(shopVid);
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    shopVid.pause(); shopVid.removeAttribute('autoplay');
+  }
+}
+
+/* Pause hero video when tab hidden */
+const heroVid=document.getElementById('heroVideo');
+if(heroVid){
+  document.addEventListener('visibilitychange',()=>{
+    document.hidden ? heroVid.pause() : heroVid.play().catch(()=>{});
+  });
+  /* Respect reduced-motion: pause and show poster */
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    heroVid.pause(); heroVid.removeAttribute('autoplay');
+  }
+}
+
+/* Active nav link on scroll */
+const sections=[...document.querySelectorAll('section[id],div[id="top"]')];
+const navLinks=[...document.querySelectorAll('nav.links a')];
+const navObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id)});
+    }
+  });
+},{threshold:.35});
+sections.forEach(s=>s.id&&navObs.observe(s));
+
+
+/* === CONTACT FORM === */
+/* Contact form (front-end only; connect a form provider before launch) */
+var _cf=document.getElementById('contactForm');
+if(_cf)_cf.addEventListener('submit',e=>{
+  e.preventDefault();
+  document.getElementById('formNote').innerHTML='Thanks — while the online form is being set up, call <a href="tel:6077352965" style="color:var(--text);text-decoration:underline">607-735-2965</a> or message the club on Facebook and we\'ll get right back to you.';
+});
+</script>
+
+
+<!-- Standalone always-visible mobile burger (belt + suspenders approach) -->
+<style>
+.sb-burger{
+  position:fixed;top:18px;right:18px;z-index:10001;
+  width:48px;height:48px;border-radius:6px;
+  background:var(--cobalt);border:none;cursor:pointer;
+  display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  box-shadow:0 4px 18px rgba(61,99,255,.5);
+}
+.sb-burger span{width:20px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.sb-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.sb-burger.open span:nth-child(2){opacity:0}
+.sb-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:900px){.sb-burger{display:flex!important}}
+</style>
+<button class="sb-burger" id="sbBurger" aria-label="Open menu">
+  <span></span><span></span><span></span>
+</button>
+<script>
+(function(){
+  var btn=document.getElementById('sbBurger');
+  var menu=document.getElementById('mobileMenu');
+  if(!btn||!menu) return;
+  btn.addEventListener('click',function(){
+    var open=menu.classList.toggle('open');
+    document.body.classList.toggle('menu-open',open);
+    btn.classList.toggle('open',open);
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      menu.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      btn.classList.remove('open');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
