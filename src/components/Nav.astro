@@ -1,0 +1,33 @@
+---
+import { primaryNav } from '../data/nav';
+import { siteMeta } from '../data/siteMeta';
+import CourtReserveButton from './CourtReserveButton.astro';
+---
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label={`${siteMeta.name} — home`}>
+      <span class="flx">FLX</span>
+      <i class="mark" aria-hidden="true"></i>
+      <span class="lockup"><b>Pickleball</b><span>Club</span></span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      {primaryNav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href={siteMeta.phoneHref}>{siteMeta.phone}</a>
+      <CourtReserveButton to="bookCourt" label="Book a Court" />
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  {primaryNav.map((item) => <a href={item.href}>{item.label}</a>)}
+  <CourtReserveButton to="bookCourt" label="Book a Court" style="margin-top:10px" />
+  <a class="btn btn-ghost" href={siteMeta.phoneHref} style="margin-top:8px;justify-content:center">{siteMeta.phone}</a>
+</div>
+
+<!-- Standalone always-visible mobile burger (belt + suspenders, matches original) -->
+<button class="sb-burger" id="sbBurger" aria-label="Open menu">
+  <span></span><span></span><span></span>
+</button>

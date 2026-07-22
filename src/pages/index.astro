@@ -1,0 +1,329 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Media from '../components/Media.astro';
+import CourtReserveButton from '../components/CourtReserveButton.astro';
+
+const images = {
+  facility: { src: '/images/flx/facility-main.jpg', alt: 'The indoor court floor at FLX Pickleball Club', pos: '50% 45%' },
+  facilityDetail: { src: '/images/flx/court-net-detail.jpg', alt: 'Court surfaces and nets across the floor at FLX Pickleball Club', pos: '50% 52%' },
+  facilityOpenPlay: { src: '/images/flx/open-play.jpg', alt: 'Players mid-rally at the net during open play at FLX Pickleball Club', pos: '50% 46%' },
+  facilityCommunity: { src: '/images/flx/community-courtside.jpg', alt: 'Players together courtside between games at FLX Pickleball Club', pos: '50% 32%' },
+  community: { src: '/images/flx/community-between-games.jpg', alt: 'Players between games at FLX Pickleball Club', pos: '50% 36%' },
+  inside: { src: '/images/flx/inside-evening.jpg', alt: 'A club event with the FLX Pickleball Club community on the courts', pos: '50% 48%' },
+};
+---
+
+<BaseLayout
+  title="FLX Pickleball Club — Indoor Pickleball in Horseheads, NY"
+  description="Six indoor PickleRoll pickleball courts in Horseheads, NY. Open play, court rentals, lessons, and events — open seven days a week, for every age and level."
+  ogDescription="Six indoor PickleRoll courts in Horseheads, NY. Drop-in open play, court rentals, lessons, and events — open 7 days a week, for every age and level."
+>
+
+<!-- ===== HERO ===== -->
+<section class="hero" aria-label="Intro">
+  <div class="hero-photo" aria-hidden="true">
+    <video id="heroVideo" autoplay muted loop playsinline preload="auto"
+      poster="/images/flx/hero-poster.jpg"
+      aria-hidden="true">
+      <source src="/video/hero.webm" type="video/webm">
+      <source src="/video/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-floor" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-court2" id="heroCourt2" aria-hidden="true">
+    <svg viewBox="0 0 440 900" fill="none">
+      <rect x="20" y="10" width="400" height="880" rx="6" stroke-width="1.4"/>
+      <line x1="20" y1="450" x2="420" y2="450" stroke-width="1.4"/>
+      <line x1="20" y1="310" x2="420" y2="310" stroke-width="1"/>
+      <line x1="20" y1="590" x2="420" y2="590" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="hero-court" id="heroCourt" aria-hidden="true">
+    <svg viewBox="0 0 440 900" fill="none">
+      <rect class="cl" x="20" y="10" width="400" height="880" rx="6" stroke-width="2"/>
+      <line class="net" x1="20" y1="450" x2="420" y2="450" stroke-width="3.2"/>
+      <line class="cl d1" x1="20" y1="310" x2="420" y2="310" stroke-width="1.6"/>
+      <line class="cl d1" x1="20" y1="590" x2="420" y2="590" stroke-width="1.6"/>
+      <line class="cl d2" x1="220" y1="10" x2="220" y2="310" stroke-width="1.6"/>
+      <line class="cl d2" x1="220" y1="590" x2="220" y2="890" stroke-width="1.6"/>
+      <rect class="chase" x="20" y="10" width="400" height="880" rx="6"/>
+    </svg>
+  </div>
+  <div class="hero-sweep" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-inner" id="heroInner">
+      <div class="hero-brand">
+        <span class="flx-big">FLX</span>
+        <i class="dot" aria-hidden="true"></i>
+        <div class="stack">
+          <b>Pickleball Club</b>
+          <i aria-hidden="true"></i>
+          <span>Horseheads, New York</span>
+        </div>
+      </div>
+      <h1 class="display">
+        <span class="line-mask l1"><span>Six courts.</span></span>
+        <span class="line-mask l2"><span>One community.</span></span>
+        <span class="line-mask l3"><span class="accent">Your place to play.</span></span>
+      </h1>
+      <p class="hero-sub">Six indoor courts in Horseheads, open seven days a week. <strong>Drop-in open play, court rentals, lessons, and events</strong> — for every age and every level.</p>
+      <div class="hero-actions">
+        <CourtReserveButton to="bookCourt" label="Book a Court" />
+        <a class="btn btn-ghost" href="/play">View Programs</a>
+      </div>
+      <div class="hero-proof">
+        <div><b>6 Indoor Courts</b><span>PickleRoll surfaces</span></div>
+        <div><b>Open 7 Days</b><span>Play &amp; rentals</span></div>
+        <div><b>Lessons &amp; Events</b><span>All levels</span></div>
+        <div><b>Horseheads, NY</b><span>3300 Chambers Rd</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><span class="bar"></span>Scroll</div>
+</section>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <span>Open 7 days a week <i></i></span><span>6 indoor PickleRoll courts <i></i></span><span>C&amp;D competition nets <i></i></span><span>Open play daily <i></i></span><span>Court rentals <i></i></span><span>Lessons &amp; clinics <i></i></span><span>Tournaments &amp; events <i></i></span><span>Horseheads, NY <i></i></span>
+  </div>
+</div>
+
+<!-- ===== STATS BAR ===== -->
+<div class="stats" aria-label="Club at a glance">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><b>6</b><span>Indoor Courts</span></div>
+      <div class="stat"><b>7</b><span>Days a Week</span></div>
+      <div class="stat"><b>OPEN</b><span>Play + Rentals</span></div>
+      <div class="stat"><b>All</b><span>Ages &amp; Levels</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUICK ACTIONS ===== -->
+<section class="quick" aria-label="Quick actions">
+  <div class="wrap">
+    <div class="quick-grid">
+      <a class="reveal" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener"><span class="num">01 / Reserve</span><h3>Book a Court <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3></a>
+      <a class="reveal d1" href="play.html"><span class="num">02 / Daily</span><h3>Join Open Play <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3></a>
+      <a class="reveal d2" href="play.html"><span class="num">03 / Improve</span><h3>Take a Lesson <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3></a>
+      <a class="reveal d3" href="tournaments.html"><span class="num">04 / Compete</span><h3>View Events <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3></a>
+      <a class="reveal d4" href="about.html"><span class="num">05 / Say hello</span><h3>Contact FLX <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></h3></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FACILITY ===== -->
+<section class="light" id="facility">
+  <span class="ghost" style="right:-2%;top:6%" aria-hidden="true">COURTS</span>
+  <div class="wrap">
+    <div class="facility-lead">
+      <div class="head reveal">
+        <p class="eyebrow"><span class="idx">01</span> The Facility</p>
+        <h2 class="display">Six courts.<br>Zero compromises.</h2>
+      </div>
+      <p class="lede reveal d1">A lot of indoor pickleball is borrowed space — taped lines on a gym floor, portable nets, leftover hours. FLX was built the other way around: a dedicated indoor club where everything is set up for the game.</p>
+    </div>
+
+    <Media img={images.facility} variant="m-a" class="facility-hero reveal" caption="The main court floor — 3300 Chambers Rd, Horseheads" eager>
+      <Fragment slot="lines">
+        <svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice"><rect x="60" y="40" width="330" height="370" rx="4" stroke-width="1.4"/><line x1="60" y1="225" x2="390" y2="225" stroke-width="1.8"/><line x1="60" y1="150" x2="390" y2="150"/><line x1="60" y1="300" x2="390" y2="300"/><rect x="450" y="40" width="330" height="370" rx="4" stroke-width="1.4"/><line x1="450" y1="225" x2="780" y2="225" stroke-width="1.8"/><line x1="450" y1="150" x2="780" y2="150"/><line x1="450" y1="300" x2="780" y2="300"/></svg>
+      </Fragment>
+    </Media>
+
+    <div class="facility-row">
+      <Media img={images.facilityDetail} variant="m-b" class="reveal" caption="PickleRoll surfaces, C&amp;D Competition nets">
+        <Fragment slot="lines">
+          <svg viewBox="0 0 400 330" preserveAspectRatio="xMidYMid slice"><line x1="0" y1="165" x2="400" y2="165" stroke-width="2"/><line x1="0" y1="95" x2="400" y2="95"/><line x1="0" y1="235" x2="400" y2="235"/><line x1="200" y1="0" x2="200" y2="95"/></svg>
+        </Fragment>
+      </Media>
+      <Media img={images.facilityOpenPlay} variant="m-a" class="reveal d1" caption="Open play, every day of the week">
+        <Fragment slot="lines">
+          <svg viewBox="0 0 400 330" preserveAspectRatio="xMidYMid slice"><rect x="70" y="30" width="260" height="270" rx="4" stroke-width="1.4"/><line x1="70" y1="165" x2="330" y2="165" stroke-width="1.8"/></svg>
+        </Fragment>
+      </Media>
+      <Media img={images.facilityCommunity} variant="m-c" class="reveal d2" caption="Between games at the club">
+        <Fragment slot="lines">
+          <svg viewBox="0 0 400 330" preserveAspectRatio="xMidYMid slice"><line x1="0" y1="240" x2="400" y2="240" stroke-width="2"/><line x1="0" y1="120" x2="400" y2="120"/></svg>
+        </Fragment>
+      </Media>
+    </div>
+
+    <div class="spec-strip">
+      <div class="spec reveal"><div class="k">6</div><h3>PickleRoll courts</h3><p>Cushioned professional surfaces with a true, consistent bounce.</p></div>
+      <div class="spec reveal d1"><div class="k">C&amp;D</div><h3>Competition nets</h3><p>Regulation, tournament-grade nets on all six courts.</p></div>
+      <div class="spec reveal d2"><div class="k">7</div><h3>Days a week</h3><p>Open play and rentals every day. Indoors, the season never ends.</p></div>
+      <div class="spec reveal d3"><div class="k">All</div><h3>Ages &amp; levels</h3><p>First rally or tournament Sunday — this floor is for both.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMMUNITY ===== -->
+<section class="community" id="community">
+  <div class="wrap">
+    <div class="community-inner">
+      <div class="reveal">
+        <p class="eyebrow" style="color:rgba(240,241,238,.68)"><span class="idx">05</span> The Club</p>
+        <h2 class="display">Built by players, <span class="serif">for players.</span></h2>
+        <p class="lede">Regulars who save you a spot in rotation. Rivals who become doubles partners. Beginners who walk in nervous on a Tuesday and leave with a standing game. That's the club — and everyone gets the same welcome.</p>
+        <div class="pill-row" aria-label="Community highlights">
+          <span class="pill">Beginner friendly</span><span class="pill">Competitive play</span><span class="pill">Seniors welcome</span><span class="pill">Family court time</span><span class="pill">Local &amp; independent</span>
+        </div>
+      </div>
+      <Media img={images.community} variant="m-c" class="community-media reveal d2" caption="Between points at FLX">
+        <Fragment slot="lines">
+          <svg viewBox="0 0 400 450" preserveAspectRatio="xMidYMid slice"><rect x="50" y="40" width="300" height="370" rx="4" stroke-width="1.4"/><line x1="50" y1="225" x2="350" y2="225" stroke-width="1.8"/><line x1="50" y1="150" x2="350" y2="150"/><line x1="50" y1="300" x2="350" y2="300"/></svg>
+        </Fragment>
+      </Media>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSIDE FLX ===== -->
+<section class="inside" id="inside" aria-label="Inside FLX">
+  <div class="inside-stage">
+    <Media img={images.inside} variant="m-a" ariaHidden>
+      <Fragment slot="lines">
+        <svg viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice"><rect x="180" y="80" width="480" height="640" rx="6" stroke-width="1.6"/><line x1="180" y1="400" x2="660" y2="400" stroke-width="2"/><line x1="180" y1="270" x2="660" y2="270"/><line x1="180" y1="530" x2="660" y2="530"/><rect x="760" y="80" width="480" height="640" rx="6" stroke-width="1.6"/><line x1="760" y1="400" x2="1240" y2="400" stroke-width="2"/><line x1="760" y1="270" x2="1240" y2="270"/><line x1="760" y1="530" x2="1240" y2="530"/></svg>
+      </Fragment>
+    </Media>
+    <div class="inside-content">
+      <div class="wrap">
+        <p class="eyebrow reveal" style="color:rgba(240,241,238,.72)"><span class="idx">06</span> Inside FLX</p>
+        <h2 class="display reveal d1">More than a place to play. <span class="serif">A place to belong.</span></h2>
+        <p class="lede reveal d2">Walk in on a busy evening and you'll hear it before you see it — rallies, laughter between points, someone waving you into the next game. Serious courts, a welcoming crowd, one indoor home for the sport.</p>
+        <div class="inside-facets">
+          <div class="facet reveal"><div class="fk">Energy</div><h3>The open-play buzz</h3><p>A steady rotation of games where everyone gets on court.</p></div>
+          <div class="facet reveal d1"><div class="fk">Standard</div><h3>Courts built for real play</h3><p>Six PickleRoll surfaces, C&amp;D nets, honest bounce.</p></div>
+          <div class="facet reveal d2"><div class="fk">Growth</div><h3>Coaching &amp; competition</h3><p>Lessons, clinics, and events that move your game forward.</p></div>
+          <div class="facet reveal d3"><div class="fk">Home</div><h3>A local club</h3><p>Independent, welcoming, and proudly rooted in the region.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPLORE ===== -->
+<section style="padding:clamp(72px,8vw,110px) 0;background:var(--coal-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head split reveal" style="position:relative;z-index:2">
+      <div>
+        <p class="eyebrow"><span class="idx">·</span> Everything FLX</p>
+        <h2 class="display">Explore the club.</h2>
+      </div>
+      <p class="lede" style="margin-top:0">Six courts, a pro shop, professional coaching, tournaments, and a community that shows up every day.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:clamp(40px,5vw,64px)">
+      <a href="/play" class="explore-card reveal"><span class="ec-label">Play</span><span class="ec-title">Open Play, Rentals &amp; Lessons</span><span class="ec-desc">Drop in any day, book a private court, or work with one of our coaches.</span><span class="ec-go">Explore &rarr;</span></a>
+      <a href="/tournaments" class="explore-card reveal d1"><span class="ec-label">Compete</span><span class="ec-title">Tournaments &amp; Events</span><span class="ec-desc">4–6 full tournaments per year plus round robins, mixers, and special events.</span><span class="ec-go">Explore &rarr;</span></a>
+      <a href="/pro-shop" class="explore-card reveal d2"><span class="ec-label">Shop</span><span class="ec-title">Pro Shop &amp; Demo Paddles</span><span class="ec-desc">Paddles, balls, apparel, and premium demo rentals — all in the club.</span><span class="ec-go">Explore &rarr;</span></a>
+      <a href="/membership" class="explore-card reveal"><span class="ec-label">Membership</span><span class="ec-title">Pricing &amp; Membership</span><span class="ec-desc">$15/month member pricing. Discounted rates on everything. No commitment.</span><span class="ec-go">Explore &rarr;</span></a>
+      <a href="/about" class="explore-card reveal d1"><span class="ec-label">About</span><span class="ec-title">About FLX &amp; Visit Us</span><span class="ec-desc">Our story, location, hours, and contact. Come see the courts for yourself.</span><span class="ec-go">Explore &rarr;</span></a>
+      <a href="https://www.facebook.com/FLXPickleballClub" target="_blank" rel="noopener" class="explore-card reveal d2"><span class="ec-label">Follow</span><span class="ec-title">FLX on Facebook</span><span class="ec-desc">Events, announcements, photos, and community updates.</span><span class="ec-go">Follow us &rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials light" aria-label="What players say">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow"><span class="idx">·</span> What Players Are Saying</p>
+      <h2 class="display">Real people.<br><span class="serif">Real reviews.</span></h2>
+    </div>
+    <div class="t-grid">
+      <div class="tcard t-feat reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="src"><svg viewBox="0 0 24 24" fill="currentColor" class="g" aria-label="Google review"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google Review</span>
+        <blockquote class="big">"Best facility around to play pickleball. Your whole family, from kids to grandparents, can enjoy the awesome sport of pickleball here."</blockquote>
+        <div class="who"><span class="av">EH</span><div><b>Emily Hafler</b><span>Google · 5 stars</span></div></div>
+      </div>
+      <div class="tcard reveal d1">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="src"><svg viewBox="0 0 24 24" fill="currentColor" class="g"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google Review</span>
+        <blockquote>"Great beginner experience. Came with my wife on a date night. The owners were kind enough to play with us so we could get used to doubles. Very thorough education. Beautiful courts. Will definitely be back."</blockquote>
+        <div class="who"><span class="av">MS</span><div><b>Matthew Simone</b><span>Google · 5 stars</span></div></div>
+      </div>
+      <div class="tcard reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="src"><svg viewBox="0 0 24 24" fill="currentColor" class="g"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg> Google Review</span>
+        <blockquote>"Fantastic establishment, family owned, plenty of space and equipment. Great for groups or a date. The woman who checked us out gave us tips and lessons and was very kind and professional."</blockquote>
+        <div class="who"><span class="av">CM</span><div><b>Chachi Macho</b><span>Google · 5 stars</span></div></div>
+      </div>
+      <div class="tcard reveal d1">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="src"><svg viewBox="0 0 24 24" fill="currentColor" class="f" aria-label="Facebook review"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> Facebook</span>
+        <blockquote>"Friendly, clean and spacious — great facility — solid selection of demo paddles. Vibe is fun — music, social events and tourneys."</blockquote>
+        <div class="who"><span class="av">DA</span><div><b>Dre Alary</b><span>Facebook · Recommends FLX</span></div></div>
+      </div>
+      <div class="tcard reveal d2">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="src"><svg viewBox="0 0 24 24" fill="currentColor" class="f"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> Facebook</span>
+        <blockquote>"We had family in from out of town and were looking for a fun, indoor activity for the kids. We all had a great time and Scott took the time to teach us the rules and how to play. Well spent afternoon!"</blockquote>
+        <div class="who"><span class="av">AR</span><div><b>Amanda Ruth</b><span>Google · 5 stars</span></div></div>
+      </div>
+      <div class="tcard reveal d1">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="src"><svg viewBox="0 0 24 24" fill="currentColor" class="f"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> Facebook</span>
+        <blockquote>"Awesome spot for all levels of play, good community."</blockquote>
+        <div class="who"><span class="av">KH</span><div><b>Kray Hubner</b><span>Facebook · Recommends FLX</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final" aria-label="Get started">
+  <span class="ghost" aria-hidden="true">FLX</span>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow reveal" style="justify-content:center">Ready when you are</p>
+    <h2 class="display reveal d1">Your court is waiting.<span class="serif">Find your next game at FLX.</span></h2>
+    <p class="lede reveal d2">Book a court, join open play, or stop in and watch a few games. We'll see you on the court.</p>
+    <div class="hero-actions reveal d3">
+      <CourtReserveButton to="bookCourt" label="Get Started on CourtReserve" />
+      <a class="btn btn-ghost" href="tel:6077352965">Call 607-735-2965</a>
+    </div>
+    <p class="sub-line reveal d4">3300 Chambers Rd, Horseheads, NY · Open 7 days a week</p>
+  </div>
+</section>
+
+</BaseLayout>

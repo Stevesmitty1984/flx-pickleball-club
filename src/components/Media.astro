@@ -1,0 +1,40 @@
+---
+// Photo-or-gradient panel, matching the original FLX_IMAGES pattern:
+// photo present -> photo + overlay + caption; photo missing/broken -> the
+// designed gradient + etched court lines remain visible, no broken image.
+export interface Props {
+  img: { src: string; alt: string; pos?: string };
+  variant?: 'm-a' | 'm-b' | 'm-c';
+  caption?: string;
+  class?: string;
+  ariaHidden?: boolean;
+  eager?: boolean;
+}
+
+const {
+  img,
+  variant = 'm-a',
+  caption,
+  class: className = '',
+  ariaHidden = false,
+  eager = false,
+} = Astro.props;
+---
+
+<figure class={`media ${variant}${className ? ` ${className}` : ''}`} aria-hidden={ariaHidden ? 'true' : undefined}>
+  <div class="art" aria-hidden="true"></div>
+  <div class="lines" aria-hidden="true">
+    <slot name="lines" />
+  </div>
+  <img
+    class="photo"
+    src={img.src}
+    alt={img.alt}
+    style={img.pos ? `object-position:${img.pos}` : undefined}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+    onload="this.closest('.media').classList.add('has-photo')"
+    onerror="this.remove()"
+  />
+  {caption && <figcaption class="cap">{caption}</figcaption>}
+</figure>

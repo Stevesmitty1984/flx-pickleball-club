@@ -1,0 +1,36 @@
+---
+// Single component every CourtReserve outbound link/button goes through, so
+// links stay intentional and consistent instead of hand-copied per page.
+import { courtReserveLinks, type CourtReserveLinkKey } from '../data/courtreserve';
+
+export interface Props {
+  to?: CourtReserveLinkKey;
+  href?: string;
+  label: string;
+  variant?: 'primary' | 'ghost' | 'link';
+  showArrow?: boolean;
+  class?: string;
+  style?: string;
+}
+
+const {
+  to = 'bookCourt',
+  href,
+  label,
+  variant = 'primary',
+  showArrow = true,
+  class: className = '',
+  style,
+} = Astro.props;
+
+const url = href ?? courtReserveLinks[to];
+const isPlainLink = variant === 'link';
+const btnClass = isPlainLink ? className : `btn btn-${variant}${className ? ` ${className}` : ''}`;
+---
+
+<a class={btnClass} href={url} target="_blank" rel="noopener" style={style}>
+  {label}
+  {!isPlainLink && showArrow && (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  )}
+</a>
