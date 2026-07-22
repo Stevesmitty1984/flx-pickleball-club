@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Pro Shop - Paddles, Gear & Apparel | FLX Pickleball Club';
+const description = 'Shop quality pickleball paddles, balls, apparel, and accessories. JOOLA, Selkirk, SLK, LUXX and more in stock. Same-day checkout available.';
+---
+
+<BaseLayout title={title} description={description}>
+
+<!-- PRO SHOP PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <video autoplay muted loop playsinline preload="metadata" poster="/images/flx/proshop-poster.jpg" style="filter:brightness(0.9) contrast(1.1) saturate(1.0)">
+      <source src="/video/proshop.webm" type="video/webm">
+      <source src="/video/proshop.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="wrap page-hero-inner">
+    <p class="eyebrow">Pro Shop &amp; Demo Paddles</p>
+    <h1>Gear up before<br><span style="color:transparent;-webkit-text-stroke:1.5px var(--cobalt-hi)">you play.</span></h1>
+    <p class="lede">Paddles, balls, apparel, and accessories — all in-house at the club. Walk in, gear up, get on the court the same day. No online orders, no shipping wait.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="tel:6077352965">Ask About Gear <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#demo">Demo Program</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRO SHOP SECTION -->
+<section id="pro-shop" style="position:relative;background:var(--coal);overflow:hidden">
+  <!-- Subtle video background at very low opacity -->
+  <div style="position:absolute;inset:0;z-index:0;overflow:hidden">
+    <video autoplay muted loop playsinline preload="metadata"
+      style="width:100%;height:100%;object-fit:cover;opacity:0.14;filter:saturate(0.35) brightness(0.55)">
+      <source src="/video/proshop.webm" type="video/webm">
+      <source src="/video/proshop.mp4" type="video/mp4">
+    </video>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,14,19,.85) 0%,rgba(11,14,19,.75) 100%)"></div>
+  </div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="head">
+      <p class="eyebrow" style="color:var(--muted)"><span class="idx">·</span> The Shop</p>
+      <h2 class="display" style="color:var(--text)">Everything you need.<br><span class="serif" style="color:var(--cobalt-hi)">Right here.</span></h2>
+      <p class="lede" style="color:var(--muted)">Forget your paddle? Grip worn down? Out of balls? The FLX Pro Shop has you covered before you step on the court.</p>
+    </div>
+
+    <div class="shop-cats">
+
+      <!-- PADDLES -->
+      <div class="shop-cat" id="cat-paddles">
+        <div class="shop-cat-header" onclick="toggleCat('cat-paddles')">
+          <div class="cat-left">
+            <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3C8 3 5 6.5 5 10c0 4.5 7 11 7 11s7-6.5 7-11c0-3.5-3-7-7-7z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+            <div><h3>Paddles</h3><span class="cat-count">JOOLA · Selkirk · SLK · LUXX — 20 models</span></div>
+          </div>
+          <div class="cat-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="cat-body">
+          <ul class="cat-items">
+            <li class="cat-item"><span>Joola Agassi (16MM / 14MM)</span><b>$200–$280</b></li>
+            <li class="cat-item"><span>Agassi Pro V</span><b>$299.95</b></li>
+            <li class="cat-item"><span>Graf Pro V 16MM</span><b>$299.95</b></li>
+            <li class="cat-item"><span>Hyperion Pro V</span><b>$299.95</b></li>
+            <li class="cat-item"><span>Joola Graf</span><b>$200.00</b></li>
+            <li class="cat-item"><span>Joola Hyperion IV</span><b>$200–$280</b></li>
+            <li class="cat-item"><span>Joola Persus IV</span><b>$200.00</b></li>
+            <li class="cat-item"><span>Joola Scorpeus IV</span><b>$200.00</b></li>
+            <li class="cat-item"><span>Kosmos Pro V</span><b>$299.95</b></li>
+            <li class="cat-item"><span>LUXX Control Air – Epic</span><b>$280.00</b></li>
+            <li class="cat-item"><span>LUXX Control Air – Invikta</span><b>$280.00</b></li>
+            <li class="cat-item"><span>Persus Pro V</span><b>$299.95</b></li>
+            <li class="cat-item"><span>Scorpeus Pro V</span><b>$299.95</b></li>
+            <li class="cat-item"><span>Selkirk BoomStick</span><b>$332.99</b></li>
+            <li class="cat-item"><span>Selkirk Era</span><b>$199.99</b></li>
+            <li class="cat-item"><span>Selkirk Omni</span><b>$299.99</b></li>
+            <li class="cat-item"><span>Selkirk Power Air</span><b>$249.99</b></li>
+            <li class="cat-item"><span>SLK Dauntless Elongated</span><b>$179.99</b></li>
+            <li class="cat-item"><span>SLK Geo Elongated 16mm</span><b>$100.00</b></li>
+            <li class="cat-item"><span>Paddle Rental</span><b>$5.00</b></li>
+          </ul>
+          <p class="cat-note">Not sure which paddle is right for you? Ask at the desk — or try before you buy with our demo wall.</p>
+        </div>
+      </div>
+
+      <!-- ACCESSORIES -->
+      <div class="shop-cat" id="cat-accessories">
+        <div class="shop-cat-header" onclick="toggleCat('cat-accessories')">
+          <div class="cat-left">
+            <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+            <div><h3>Balls &amp; Accessories</h3><span class="cat-count">Grips · Edge tape · Covers · More — 9 items</span></div>
+          </div>
+          <div class="cat-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="cat-body">
+          <ul class="cat-items">
+            <li class="cat-item"><span>Joola Edge Guard Tape</span><b>$9.95–$17.95</b></li>
+            <li class="cat-item"><span>Joola Paddle Cover</span><b>$19.95</b></li>
+            <li class="cat-item"><span>Joola Premium Synthetic Overgrip</span><b>$9.95</b></li>
+            <li class="cat-item"><span>Retrora Lead Tape 3g</span><b>$1.50</b></li>
+            <li class="cat-item"><span>Selkirk Edge Tape</span><b>$8.00</b></li>
+            <li class="cat-item"><span>Selkirk GeoGrip Replacement Grip</span><b>$10.00</b></li>
+            <li class="cat-item"><span>Selkirk Paddle Case</span><b>$20.00</b></li>
+            <li class="cat-item"><span>Selkirk Riley Mini Paddle</span><b>$15.00</b></li>
+            <li class="cat-item"><span>Single Overgrip</span><b>$2.00</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- APPAREL -->
+      <div class="shop-cat" id="cat-apparel">
+        <div class="shop-cat-header" onclick="toggleCat('cat-apparel')">
+          <div class="cat-left">
+            <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H5v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10h1.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
+            <div><h3>FLX Apparel &amp; Gear</h3><span class="cat-count">Shirts · Hoodies · Hats · Bags — 10 items</span></div>
+          </div>
+          <div class="cat-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="cat-body">
+          <ul class="cat-items">
+            <li class="cat-item"><span>FLX T-Shirt</span><b>$20.00</b></li>
+            <li class="cat-item"><span>FLX Tank Top</span><b>$20.00</b></li>
+            <li class="cat-item"><span>FLX Long Sleeve</span><b>$22.00</b></li>
+            <li class="cat-item"><span>FLX Crew Neck Sweatshirt</span><b>$30.00</b></li>
+            <li class="cat-item"><span>FLX Hoodie</span><b>$35.00</b></li>
+            <li class="cat-item"><span>FLX Hat</span><b>$15.00</b></li>
+            <li class="cat-item"><span>FLX Youth Shirts</span><b>$15.00</b></li>
+            <li class="cat-item"><span>Men's Tank Tops</span><b>$20.00</b></li>
+            <li class="cat-item"><span>Gamma Tour Backpack</span><b>$119.99</b></li>
+            <li class="cat-item"><span>Joola Tour Elite Pro Bag</span><b>$139.95</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SNACKS & DRINKS + MISC -->
+      <div class="shop-cat" id="cat-snacks">
+        <div class="shop-cat-header" onclick="toggleCat('cat-snacks')">
+          <div class="cat-left">
+            <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+            <div><h3>Snacks, Drinks &amp; More</h3><span class="cat-count">Energize between games — 35+ items</span></div>
+          </div>
+          <div class="cat-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></div>
+        </div>
+        <div class="cat-body">
+          <ul class="cat-items">
+            <li class="cat-item"><span>Bottled Water</span><b>$1.00</b></li>
+            <li class="cat-item"><span>Powerade</span><b>$3.00</b></li>
+            <li class="cat-item"><span>Energy Drinks</span><b>$2.75</b></li>
+            <li class="cat-item"><span>Coconut Water</span><b>$2.00</b></li>
+            <li class="cat-item"><span>Sparkling Ice</span><b>$2.00</b></li>
+            <li class="cat-item"><span>Soda</span><b>$3.00</b></li>
+            <li class="cat-item"><span>Cliff Bar</span><b>$2.00</b></li>
+            <li class="cat-item"><span>Kind Protein Bar</span><b>$2.00</b></li>
+            <li class="cat-item"><span>Ready Clean Protein Bars</span><b>$2.00</b></li>
+            <li class="cat-item"><span>Better Nut Bars</span><b>$1.25</b></li>
+            <li class="cat-item"><span>Heart Healthy Nut Mix</span><b>$2.00</b></li>
+            <li class="cat-item"><span>Trail Mix</span><b>$0.75</b></li>
+            <li class="cat-item"><span>Chips</span><b>$1.00</b></li>
+            <li class="cat-item"><span>Cheez Its</span><b>$1.00</b></li>
+            <li class="cat-item"><span>Candy Bars</span><b>$2.25</b></li>
+            <li class="cat-item"><span>Skittles</span><b>$2.25</b></li>
+            <li class="cat-item"><span>Cinnamon Rolls</span><b>$2.00</b></li>
+            <li class="cat-item"><span>+ many more snacks in store</span><b></b></li>
+          </ul>
+          <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--line-l)">
+            <p style="font:700 .92rem/1.3 var(--body);color:var(--text);margin-bottom:10px">Also in stock:</p>
+            <ul class="cat-items">
+              <li class="cat-item"><span>Custom 20oz Tumblers</span><b>$15.00</b></li>
+              <li class="cat-item"><span>Socks</span><b>$2.00</b></li>
+              <li class="cat-item"><span>Gift Cards</span><b>Any amount</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DEMO PADDLES SECTION -->
+<section id="demo">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(36px,5vw,80px);align-items:center">
+      <div class="demo-photo">
+        <img src="/images/flx/demo-paddles.jpg" alt="The premium demo paddle wall at FLX Pickleball Club Pro Shop">
+        <span class="dtag">The Demo Wall</span>
+      </div>
+      <div>
+        <p class="eyebrow">Demo Paddle Program</p>
+        <h2 class="display">Hit with it first.<br><span class="serif">Then decide.</span></h2>
+        <p class="lede">A paddle feels completely different in your hand than it reads in a review. Our demo wall lets you take today's top paddles onto a real court before you spend a dollar on the wrong one.</p>
+        <ul style="margin-top:22px;list-style:none;display:flex;flex-direction:column;gap:12px">
+          <li style="display:flex;align-items:baseline;gap:12px;color:var(--muted);font-size:.97rem"><span style="width:7px;height:7px;background:var(--cobalt);transform:rotate(45deg);flex:none;display:inline-block;margin-top:2px"></span>Try premium paddles on real courts before buying</li>
+          <li style="display:flex;align-items:baseline;gap:12px;color:var(--muted);font-size:.97rem"><span style="width:7px;height:7px;background:var(--cobalt);transform:rotate(45deg);flex:none;display:inline-block;margin-top:2px"></span>Wide selection of current top models</li>
+          <li style="display:flex;align-items:baseline;gap:12px;color:var(--muted);font-size:.97rem"><span style="width:7px;height:7px;background:var(--cobalt);transform:rotate(45deg);flex:none;display:inline-block;margin-top:2px"></span>Staff advice included — no upsell pressure</li>
+        </ul>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:30px">
+          <a class="btn btn-primary" href="tel:6077352965">Ask About Demos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost" href="/about">Visit the Club</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="inner-final">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <h2>Stop in before your next session.<span class="serif">The shop is open whenever the club is.</span></h2>
+    <p class="lede">Ask about paddles, demo gear, or apparel. We're here seven days a week.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="tel:6077352965">Call 607-735-2965 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="/about">Get Directions</a>
+    </div>
+  </div>
+</div>
+
+<style>
+.shop-cats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:clamp(44px,5vw,66px);position:relative;z-index:2}
+.shop-cat{background:rgba(16,20,27,.82);border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:box-shadow .35s var(--ease),border-color .35s;backdrop-filter:blur(12px)}
+.shop-cat:hover{box-shadow:var(--shadow);border-color:rgba(61,99,255,.45)}
+.shop-cat-header{display:flex;align-items:center;justify-content:space-between;padding:24px 26px;cursor:pointer;user-select:none;gap:16px}
+.shop-cat-header:hover .cat-arr{border-color:var(--cobalt);background:rgba(61,99,255,.08)}
+.cat-left{display:flex;align-items:center;gap:16px}
+.cat-icon{width:42px;height:42px;border-radius:3px;border:1px solid var(--line);display:grid;place-items:center;color:var(--cobalt-hi);flex:none}
+.cat-icon svg{width:19px;height:19px}
+.cat-left h3{font:700 1.12rem/1.2 var(--body);color:var(--text);margin:0}
+.cat-count{font:500 11px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px;display:block}
+.cat-arr{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;flex:none;color:var(--cobalt-hi);transition:all .35s var(--ease)}
+.cat-arr svg{width:14px;height:14px;transition:transform .35s var(--ease)}
+.shop-cat.open .cat-arr svg{transform:rotate(180deg)}
+.shop-cat.open .cat-arr{border-color:var(--cobalt);background:var(--cobalt);color:#fff}
+.cat-body{display:none;border-top:1px solid var(--line);padding:0 26px 22px}
+.shop-cat.open .cat-body{display:block}
+.cat-items{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:0}
+.cat-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);gap:12px}
+.cat-item:last-child{border-bottom:none}
+.cat-item span{font:500 .95rem/1.3 var(--body);color:var(--muted)}
+.cat-item b{font:600 .92rem/1 var(--body);color:var(--cobalt-hi);white-space:nowrap}
+.cat-note{font:500 12px/1.6 var(--body);color:var(--muted);margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.demo-photo{position:relative;overflow:hidden;border-radius:8px;border:1px solid var(--line);aspect-ratio:16/12}
+.demo-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.dtag{position:absolute;bottom:14px;left:16px;font:700 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(12,21,23,.68);padding:6px 10px;border-radius:3px;backdrop-filter:blur(4px)}
+.ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+@media(max-width:700px){
+  .shop-cats{grid-template-columns:1fr}
+}
+</style>
+
+<script>
+function toggleCat(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+</script>
+
+</BaseLayout>

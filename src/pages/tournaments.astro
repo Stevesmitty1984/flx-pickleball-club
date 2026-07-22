@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Tournaments & Events | Pickleball Competitions in Horseheads NY | FLX Pickleball Club';
+const description = 'Full bracket tournaments, round robins, and social events throughout the year. Open to all skill levels. Sign up on CourtReserve.';
+---
+
+<BaseLayout title={title} description={description}>
+
+<!-- TOURNAMENTS PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="/images/flx/program-events.jpg" alt="Tournament medal winners at FLX Pickleball Club" style="object-position:50% 28%;filter:brightness(0.88) contrast(1.08)">
+  </div>
+  <div class="wrap page-hero-inner">
+    <p class="eyebrow">Tournaments &amp; Events</p>
+    <h1>Compete.<br>Celebrate.<br><span style="color:transparent;-webkit-text-stroke:1.5px var(--cobalt-hi)">Show up.</span></h1>
+    <p class="lede">FLX runs 4–6 full tournaments per year plus regular round robins, social mixers, and special events — for every level, all year long.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">See Full Schedule <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="tel:6077352965">Call the Club</a>
+    </div>
+  </div>
+</section>
+
+<!-- FULL TOURNAMENTS SECTION -->
+<section class="light" id="tournaments">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Full Tournaments</p>
+      <h2 class="display">Bracket days done right.</h2>
+      <p class="lede">FLX hosts 4–6 full bracket tournaments per year — organized, competitive, and open to all skill levels. From first-timers to the sharpest pairs in the region.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center;margin-top:clamp(44px,5vw,66px)">
+      <div>
+        <div class="three-grid" style="grid-template-columns:1fr 1fr;gap:14px">
+          <div style="background:var(--cobalt);border-radius:8px;padding:28px 22px;text-align:center">
+            <div style="font-family:var(--display);font-weight:800;font-size:3rem;color:#fff;line-height:1">4–6</div>
+            <div style="font:600 11px/1.5 var(--body);letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-top:8px">Tournaments<br>per year</div>
+          </div>
+          <div style="background:var(--coal-3);border:1px solid var(--line);border-radius:8px;padding:28px 22px;text-align:center">
+            <div style="font-family:var(--display);font-weight:800;font-size:3rem;color:var(--cobalt-hi);line-height:1">All</div>
+            <div style="font:600 11px/1.5 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:8px">Skill<br>Levels</div>
+          </div>
+          <div style="background:var(--coal-3);border:1px solid var(--line);border-radius:8px;padding:28px 22px;text-align:center">
+            <div style="font-family:var(--display);font-weight:800;font-size:3rem;color:var(--cobalt-hi);line-height:1">FLX</div>
+            <div style="font:600 11px/1.5 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:8px">Run<br>In-House</div>
+          </div>
+          <div style="background:var(--coal-3);border:1px solid var(--line);border-radius:8px;padding:28px 22px;text-align:center">
+            <div style="font-family:var(--display);font-weight:800;font-size:3rem;color:var(--cobalt-hi);line-height:1">6</div>
+            <div style="font:600 11px/1.5 var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:8px">Indoor<br>Courts</div>
+          </div>
+        </div>
+      </div>
+      <div class="media m-a" style="position:relative;overflow:hidden;border-radius:6px;border:1px solid var(--line)">
+        <div class="art" aria-hidden="true"></div>
+        <div class="lines" aria-hidden="true" style="position:absolute;inset:0;opacity:.4;z-index:1"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><line x1="0" y1="150" x2="400" y2="150" stroke="rgba(240,241,238,.18)" stroke-width="2"/><line x1="0" y1="80" x2="400" y2="80" stroke="rgba(240,241,238,.12)" stroke-width="1"/><line x1="0" y1="220" x2="400" y2="220" stroke="rgba(240,241,238,.12)" stroke-width="1"/></svg></div>
+        <img src="/images/flx/program-events.jpg" alt="Tournament at FLX Pickleball Club" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2" onerror="this.style.display='none'">
+        <div style="position:absolute;inset:0;z-index:3;background:linear-gradient(0deg,rgba(11,14,19,.82) 0%,rgba(11,14,19,.2) 55%,transparent 100%)"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROUND ROBINS & EVENTS SECTION -->
+<section id="round-robins">
+  <div class="wrap">
+    <div class="head split">
+      <div><p class="eyebrow">Round Robins &amp; Social Events</p><h2 class="display">The calendar<br><span class="serif">never sits still.</span></h2></div>
+      <p class="lede" style="margin-top:0">Beyond full tournaments, FLX runs regular round robins, mixers, and special events all year — social, competitive, and always worth showing up for.</p>
+    </div>
+    <div class="sched">
+      <a class="srow" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">
+        <span class="when"><i></i>Every day</span><h3>Drop-In Open Play</h3>
+        <p>The daily heartbeat — rotating games across all levels. Come solo, leave with a foursome.</p>
+        <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="srow" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">
+        <span class="when"><i></i>Regular</span><h3>Round Robins</h3>
+        <p>Structured rotation play with balanced matchups. Social competition at its best.</p>
+        <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="srow" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">
+        <span class="when"><i></i>4–6/year</span><h3>Full Tournaments</h3>
+        <p>Bracket play, multiple divisions, prizes, and the region's best pickleball under one roof.</p>
+        <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="srow" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">
+        <span class="when"><i></i>Special</span><h3>Social &amp; Theme Events</h3>
+        <p>Holiday events, mixers, and one-off special occasions that build the community.</p>
+        <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="srow" href="/about">
+        <span class="when"><i></i>By Request</span><h3>Private Events</h3>
+        <p>Birthdays, corporate outings, group celebrations — take over the courts.</p>
+        <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+    </div>
+    <p class="note">Specific dates and sign-ups run through CourtReserve. Follow us on <a href="https://www.facebook.com/FLXPickleballClub" target="_blank" rel="noopener" style="color:var(--cobalt-hi);border-bottom:1px solid var(--cobalt);padding-bottom:1px">Facebook</a> for announcements.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="inner-final">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <h2>Don't miss the next one.<span class="serif">Check the schedule on CourtReserve.</span></h2>
+    <p class="lede">Sign up for events, see what's coming, and follow us on Facebook for last-minute announcements.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">View Full Schedule <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="https://www.facebook.com/FLXPickleballClub" target="_blank" rel="noopener">Follow on Facebook</a>
+    </div>
+  </div>
+</div>
+
+<style>
+.three-grid {
+  display: grid;
+  gap: 14px;
+}
+.media.m-a {
+  aspect-ratio: 16/12;
+}
+.head.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(30px, 5vw, 60px);
+  align-items: start;
+}
+.head.split div {
+  margin: 0;
+}
+.sched {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: clamp(44px, 5vw, 66px);
+}
+.srow {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 20px;
+  align-items: center;
+  padding: 22px 24px;
+  background: var(--coal-3);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s;
+}
+.srow:hover {
+  transform: translateX(6px);
+  box-shadow: var(--shadow);
+  border-color: rgba(61, 99, 255, 0.45);
+}
+.when {
+  font: 600 0.82rem/1 var(--body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.when i {
+  width: 6px;
+  height: 6px;
+  background: var(--cobalt-hi);
+  border-radius: 50%;
+  display: block;
+}
+.srow h3 {
+  font: 700 1.1rem/1.2 var(--body);
+  color: var(--text);
+  margin: 0 0 4px 0;
+  grid-column: 2;
+}
+.srow p {
+  font: 500 0.95rem/1.5 var(--body);
+  color: var(--muted);
+  margin: 0;
+  grid-column: 2;
+}
+.arr {
+  width: 36px;
+  height: 36px;
+  background: rgba(61, 99, 255, 0.08);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: none;
+  color: var(--cobalt-hi);
+  grid-row: 1 / -1;
+}
+.arr svg {
+  width: 16px;
+  height: 16px;
+}
+.note {
+  font: 500 0.95rem/1.6 var(--body);
+  color: var(--muted);
+  margin-top: clamp(30px, 4vw, 50px);
+  text-align: center;
+}
+.ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+@media (max-width: 900px) {
+  .head.split {
+    grid-template-columns: 1fr;
+  }
+  .three-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 700px) {
+  .srow {
+    grid-template-columns: 1fr;
+    padding: 18px 20px;
+  }
+  .srow h3,
+  .srow p {
+    grid-column: auto;
+  }
+  .when {
+    order: 2;
+  }
+  .arr {
+    display: none;
+  }
+}
+</style>
+
+</BaseLayout>

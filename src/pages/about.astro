@@ -1,0 +1,307 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'About FLX Pickleball Club | Visit Us in Horseheads, NY';
+const description = 'FLX Pickleball Club is an independent, community-focused indoor pickleball facility in Horseheads, NY. Six professional courts, lessons, and tournaments.';
+---
+
+<BaseLayout title={title} description={description}>
+
+<!-- ABOUT PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <img src="/images/flx/facility-main.jpg" alt="FLX Pickleball Club indoor courts" style="object-position:50% 40%;filter:brightness(0.88) contrast(1.10)">
+  </div>
+  <div class="wrap page-hero-inner">
+    <p class="eyebrow">About FLX</p>
+    <h1>Built by players.<br><span style="color:transparent;-webkit-text-stroke:1.5px var(--cobalt-hi)">For players.</span></h1>
+    <p class="lede">FLX Pickleball Club started because local players saw a gap — the region had people who wanted to play pickleball seriously, but nowhere serious to play it.</p>
+  </div>
+</section>
+
+<!-- OUR STORY SECTION -->
+<section class="light" id="story">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center">
+      <div>
+        <p class="eyebrow" style="color:var(--muted-d)">Our Story</p>
+        <h2 class="display" style="margin-top:16px">We were players first.</h2>
+        <div style="margin-top:22px;display:flex;flex-direction:column;gap:18px">
+          <p style="color:var(--muted-d);font-size:1.02rem;line-height:1.72;max-width:58ch">Pickleball was growing fast in our region, but the options were limited. Gym lines on a hardwood floor. Portable nets dragged out between basketball games. Playing outside whenever the weather cooperated. It was fun — but it wasn't a real facility.</p>
+          <p style="color:var(--muted-d);font-size:1.02rem;line-height:1.72;max-width:58ch">The founders of FLX had a simple idea: build the facility the region actually deserved. Not a shared multipurpose gym. Not a seasonal outdoor setup. A dedicated indoor pickleball club with professional-grade courts, competition nets, proper equipment, and a space where the local community could genuinely grow.</p>
+          <p style="color:var(--muted-d);font-size:1.02rem;line-height:1.72;max-width:58ch">That's what FLX is. Six indoor PickleRoll courts. C&D Competition nets on every court. A pro shop stocked with real gear. Coaches who play the game. And a community that shows up seven days a week to play, compete, and build something worth coming back to.</p>
+          <p style="color:var(--muted-d);font-size:1.02rem;line-height:1.72;max-width:58ch">We're local, independent, and built around one sport. That's the point.</p>
+        </div>
+      </div>
+      <div>
+        <p style="font:600 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--muted-d);margin-bottom:16px">The Evolution &mdash; <span style="letter-spacing:.1em;text-transform:none;font-weight:500">tap any photo to enlarge</span></p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <figure style="position:relative;overflow:hidden;border-radius:8px;border:1px solid var(--line-l);aspect-ratio:16/10;margin:0;cursor:zoom-in;transition:transform .3s var(--ease),box-shadow .3s var(--ease)"
+            onclick="openLB('public/images/flx/build-1.jpg','The original empty space before construction')"
+            onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 18px 40px rgba(12,21,23,.28)'"
+            onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <img src="/images/flx/build-1.jpg" alt="The original empty space before construction" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+            <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,21,23,.75) 0%,rgba(12,21,23,.2) 55%,transparent 100%)"></div>
+            <span style="position:absolute;bottom:10px;left:12px;font:700 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(12,21,23,.62);padding:5px 9px;border-radius:2px;backdrop-filter:blur(4px)">Before</span>
+            <span style="position:absolute;top:10px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(12,21,23,.55);display:grid;place-items:center;backdrop-filter:blur(4px)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" style="width:13px;height:13px"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+            </span>
+          </figure>
+          <figure style="position:relative;overflow:hidden;border-radius:8px;border:1px solid var(--line-l);aspect-ratio:16/10;margin:0;cursor:zoom-in;transition:transform .3s var(--ease),box-shadow .3s var(--ease)"
+            onclick="openLB('public/images/flx/build-3.jpg','Another view of the space before the build')"
+            onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 18px 40px rgba(12,21,23,.28)'"
+            onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <img src="/images/flx/build-3.jpg" alt="Another view of the space before the build" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+            <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,21,23,.75) 0%,rgba(12,21,23,.2) 55%,transparent 100%)"></div>
+            <span style="position:absolute;bottom:10px;left:12px;font:700 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(12,21,23,.62);padding:5px 9px;border-radius:2px;backdrop-filter:blur(4px)">Before</span>
+            <span style="position:absolute;top:10px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(12,21,23,.55);display:grid;place-items:center;backdrop-filter:blur(4px)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" style="width:13px;height:13px"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+            </span>
+          </figure>
+          <figure style="position:relative;overflow:hidden;border-radius:8px;border:1px solid var(--line-l);aspect-ratio:16/10;margin:0;cursor:zoom-in;transition:transform .3s var(--ease),box-shadow .3s var(--ease)"
+            onclick="openLB('public/images/flx/build-2.jpg','Construction underway — the space transforming')"
+            onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 18px 40px rgba(12,21,23,.28)'"
+            onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <img src="/images/flx/build-2.jpg" alt="Construction underway — the space transforming" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+            <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,21,23,.75) 0%,rgba(12,21,23,.2) 55%,transparent 100%)"></div>
+            <span style="position:absolute;bottom:10px;left:12px;font:700 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(12,21,23,.62);padding:5px 9px;border-radius:2px;backdrop-filter:blur(4px)">During</span>
+            <span style="position:absolute;top:10px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(12,21,23,.55);display:grid;place-items:center;backdrop-filter:blur(4px)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" style="width:13px;height:13px"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+            </span>
+          </figure>
+          <figure style="position:relative;overflow:hidden;border-radius:8px;border:1px solid var(--line-l);aspect-ratio:16/10;margin:0;cursor:zoom-in;transition:transform .3s var(--ease),box-shadow .3s var(--ease)"
+            onclick="openLB('public/images/flx/facility-main.jpg','The completed FLX Pickleball Club')"
+            onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 18px 40px rgba(12,21,23,.28)'"
+            onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <img src="/images/flx/facility-main.jpg" alt="The completed FLX Pickleball Club" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+            <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,21,23,.75) 0%,rgba(12,21,23,.2) 55%,transparent 100%)"></div>
+            <span style="position:absolute;bottom:10px;left:12px;font:700 10px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--cobalt);padding:5px 9px;border-radius:2px;backdrop-filter:blur(4px)">Today</span>
+            <span style="position:absolute;top:10px;right:12px;width:28px;height:28px;border-radius:50%;background:rgba(12,21,23,.55);display:grid;place-items:center;backdrop-filter:blur(4px)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" style="width:13px;height:13px"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+            </span>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT SECTION -->
+<section id="visit">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Visit the Club</p>
+      <h2 class="display">Come see it<br><span class="serif">for yourself.</span></h2>
+      <p class="lede">Ten minutes from Elmira, right in Horseheads. Stop in, watch a few games, and see the courts.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(32px,4vw,64px);margin-top:clamp(46px,5vw,70px);align-items:start">
+      <div class="loc-card">
+        <div class="loc-media">
+          <img src="/images/flx/entrance.jpg" alt="FLX Pickleball Club entrance at 3300 Chambers Rd Horseheads NY">
+        </div>
+        <div class="loc-body">
+          <p class="loc-k">Location</p>
+          <h3 class="loc-addr">3300 Chambers Rd<small>Horseheads, New York 14845</small></h3>
+          <div class="loc-rows">
+            <div class="vrow"><span class="k">Phone</span><span class="v"><a href="tel:6077352965">607-735-2965</a></span></div>
+            <div class="vrow"><span class="k">Hours</span><span class="v">Open 7 days a week — today's times on CourtReserve</span></div>
+            <div class="vrow"><span class="k">Booking</span><span class="v"><a href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">CourtReserve — courts, programs &amp; membership</a></span></div>
+            <div class="vrow"><span class="k">Follow</span><span class="v"><a href="https://www.facebook.com/FLXPickleballClub" target="_blank" rel="noopener">FLX Pickleball Club on Facebook</a></span></div>
+          </div>
+          <div class="visit-actions">
+            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=3300+Chambers+Rd+Horseheads+NY+14845" target="_blank" rel="noopener">Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn-ghost" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">Book a Court</a>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <h3>Send the club a note</h3>
+        <span class="fsub">Lessons, rentals, events, membership — ask us anything. We're quick to reply.</span>
+        <form class="cform" id="contactForm" novalidate>
+          <div class="frow">
+            <div><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" required></div>
+            <div><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
+          </div>
+          <div><label for="cf-msg">How can we help?</label><textarea id="cf-msg" name="message" placeholder="Ask about open play, lessons, court rentals, memberships, or events…" required></textarea></div>
+          <button class="btn btn-primary" type="submit" style="align-self:flex-start">Send Message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="form-note" id="formNote">Prefer to talk? Call <a href="tel:6077352965" style="color:var(--text);text-decoration:underline">607-735-2965</a> — it's the fastest way to reach the club.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="inner-final">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <h2>Ready to play?<span class="serif">Find your next game at FLX.</span></h2>
+    <p class="lede">Book a court, join open play, or stop in and watch. We'll see you on the court.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">Get Started on CourtReserve <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="tel:6077352965">Call 607-735-2965</a>
+    </div>
+  </div>
+</div>
+
+<style>
+.loc-card {
+  background: var(--coal-3);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.loc-media {
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+.loc-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.loc-body {
+  padding: 28px 26px;
+}
+.loc-k {
+  font: 600 11px/1 var(--body);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px 0;
+}
+.loc-addr {
+  font: 700 1.35rem/1.2 var(--body);
+  color: var(--text);
+  margin: 0 0 20px 0;
+}
+.loc-addr small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.loc-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.vrow {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 14px;
+  font-size: 0.95rem;
+}
+.vrow .k {
+  font: 600 10px/1.4 var(--body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex: none;
+}
+.vrow .v {
+  font: 500 0.95rem/1.5 var(--body);
+  color: var(--muted);
+}
+.vrow .v a {
+  color: var(--cobalt-hi);
+  text-decoration: none;
+  border-bottom: 1px solid var(--cobalt);
+  padding-bottom: 1px;
+}
+.visit-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.form-card {
+  background: var(--coal-3);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 28px 26px;
+}
+.form-card h3 {
+  font: 700 1.25rem/1.2 var(--body);
+  color: var(--text);
+  margin: 0 0 6px 0;
+}
+.fsub {
+  display: block;
+  font: 500 0.95rem/1.5 var(--body);
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.cform {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.frow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.frow div, .cform > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cform label {
+  font: 600 0.88rem/1.2 var(--body);
+  color: var(--text);
+}
+.cform input,
+.cform textarea {
+  font: 500 0.95rem/1.5 var(--body);
+  color: var(--text);
+  background: rgba(240, 241, 238, 0.05);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 10px 12px;
+  transition: border-color 0.35s var(--ease), background 0.35s var(--ease);
+}
+.cform input:focus,
+.cform textarea:focus {
+  outline: none;
+  border-color: var(--cobalt-hi);
+  background: rgba(61, 99, 255, 0.08);
+}
+.cform textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: var(--body);
+}
+.form-note {
+  font: 500 0.88rem/1.5 var(--body);
+  color: var(--muted);
+  margin-top: 8px;
+}
+.form-note a {
+  color: var(--text);
+  text-decoration: underline;
+}
+.ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+@media (max-width: 900px) {
+  .frow {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+function openLB(src, alt) {
+  // Placeholder for lightbox functionality.
+  // In production, you would use a lightbox library like GLightbox or Fancybox.
+  alert('Lightbox feature: ' + alt);
+}
+</script>
+
+</BaseLayout>
