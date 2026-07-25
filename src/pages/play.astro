@@ -66,6 +66,56 @@ const description = 'Drop-in open play, private court rentals, and professional 
   </div>
 </section>
 
+<!-- COURTRESERVE SCHEDULE WIDGET -->
+<section class="light" id="schedule">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Live Schedule</p>
+      <h2 class="display">What's on<br><span class="serif">this week.</span></h2>
+      <p class="lede">Today's open play sessions, clinics, and events — updated live. Click any event to sign up directly through CourtReserve.</p>
+    </div>
+    <div class="widget-wrap">
+      <iframe
+        id="form-iframe"
+        class="form-iframe-104607"
+        src="https://widgets.courtreserve.com/Online/Public/EmbedCode/9518/104607"
+        style="margin:0;width:100%;border:none;overflow:hidden;"
+        scrolling="no"
+        title="FLX Pickleball Club Daily Schedule"
+        loading="lazy">
+      </iframe>
+      <script type="text/javascript" is:inline>
+        var myEventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var myEventListener = window[myEventMethod];
+        var myEventMessage = myEventMethod == "attachEvent" ? "onmessage" : "message";
+        function onEventClick(eventId, occId) {}
+        myEventListener(myEventMessage, function(e) {
+          switch (e.data.action) {
+            case "setHeight": {
+              var embedCodeId = e.data.embedCodeId;
+              if (embedCodeId != null && embedCodeId != '') {
+                var elements = document.getElementsByClassName('form-iframe-' + embedCodeId);
+                for (var i = 0; i < elements.length; i++) {
+                  elements[i].style.height = (e.data.height) + "px";
+                }
+              } else {
+                document.getElementById('form-iframe').height = (e.data.height) + "px";
+              }
+              break;
+            }
+            case "eventClick": {
+              var eventId = e.data.params.eventId;
+              var reservationId = e.data.params.reservtionId;
+              onEventClick(eventId, reservationId);
+              break;
+            }
+          }
+        }, false);
+      </script>
+    </div>
+  </div>
+</section>
+
 <!-- COURT RENTALS SECTION -->
 <section id="court-rentals">
   <div class="wrap">
@@ -341,6 +391,14 @@ const description = 'Drop-in open play, private court rentals, and professional 
 }
 .play-final .ctas {
   justify-content: center;
+}
+.widget-wrap {
+  margin-top: clamp(44px, 5vw, 66px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  min-height: 400px;
 }
 </style>
 
