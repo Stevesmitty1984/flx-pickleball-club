@@ -10,6 +10,7 @@ export interface Props {
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
+  canonicalPath?: string;
 }
 
 const {
@@ -18,7 +19,13 @@ const {
   ogTitle = title,
   ogDescription = description,
   ogImage = '/images/flx/facility-main.jpg',
+  canonicalPath = Astro.url.pathname,
 } = Astro.props;
+
+// Canonical and OG URLs must be absolute. siteMeta.siteUrl is the single
+// source of truth for the production domain.
+const canonicalUrl = new URL(canonicalPath, siteMeta.siteUrl).href;
+const ogImageUrl = new URL(ogImage, siteMeta.siteUrl).href;
 ---
 
 <!DOCTYPE html>
@@ -31,11 +38,13 @@ const {
 <meta property="og:title" content={ogTitle}>
 <meta property="og:description" content={ogDescription}>
 <meta property="og:type" content="website">
-<meta property="og:url" content={siteMeta.siteUrl}>
-<meta property="og:image" content={ogImage}>
+<meta property="og:url" content={canonicalUrl}>
+<meta property="og:image" content={ogImageUrl}>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content={ogTitle}>
 <meta name="twitter:description" content={ogDescription}>
+<meta name="twitter:image" content={ogImageUrl}>
+<link rel="canonical" href={canonicalUrl} />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
