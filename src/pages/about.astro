@@ -22,7 +22,7 @@ const description = 'FLX Pickleball Club is an independent, community-focused in
 <!-- OUR STORY SECTION -->
 <section class="light" id="story">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center" class="story-grid">
       <div>
         <p class="eyebrow" style="color:var(--muted-d)">Our Story</p>
         <h2 class="display" style="margin-top:16px">We were players first.</h2>
@@ -346,6 +346,12 @@ const description = 'FLX Pickleball Club is an independent, community-focused in
   display: flex;
   flex-direction: column;
   min-height: 240px;
+}
+
+@media (max-width: 768px) {
+  .story-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 </style>
 
