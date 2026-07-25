@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CourtReserveButton from '../components/CourtReserveButton.astro';
 
 const title = 'Membership Plans & Pricing | FLX Pickleball Club';
-const description = 'Affordable membership plans for pickleball players in Horseheads, NY. Monthly, annual, and free options. Play unlimited with member pricing.';
+const description = 'Affordable membership plans for pickleball players in Horseheads, NY. Monthly, annual, and free options. Member pricing on open play and court rentals.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -11,264 +11,263 @@ const description = 'Affordable membership plans for pickleball players in Horse
 <!-- MEMBERSHIP PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg">
-    <img src="/images/flx/community-between-games.jpg" alt="FLX Pickleball Club members between games" style="object-position:50% 50%;filter:brightness(0.88) contrast(1.10)">
+    <img src="/images/flx/community-between-games.jpg" alt="FLX Pickleball Club members between games" style="object-position:50% 40%;filter:brightness(0.75) contrast(1.10)">
   </div>
   <div class="wrap page-hero-inner">
-    <p class="eyebrow">Membership Plans</p>
-    <h1>Play all you want.<br>Seriously.<br><span style="color:transparent;-webkit-text-stroke:1.5px var(--cobalt-hi)">Member pricing.</span></h1>
-    <p class="lede">Choose your commitment level. Member pricing makes pickleball affordable — drop in as much as you want and pay less per session.</p>
+    <p class="eyebrow">Membership &amp; Pricing</p>
+    <h1>Play more.<br><span style="color:transparent;-webkit-text-stroke:1.5px var(--cobalt-hi)">Pay less.</span></h1>
+    <p class="lede">A $15/month membership cuts your open play cost almost in half and drops court rentals by 50%. No long-term contract — just 30 days at a time.</p>
     <div class="hero-actions">
-      <CourtReserveButton to="membershipMonthly" label="Join Today" />
-      <a class="btn btn-ghost" href="#faqs">Questions?</a>
+      <CourtReserveButton to="membershipMonthly" label="Join on CourtReserve" />
+      <a class="btn btn-ghost" href="tel:6077352965">Call With Questions</a>
     </div>
   </div>
 </section>
 
-<!-- PRICING CARDS SECTION -->
-<section class="light" id="plans">
+<!-- PRICING SECTION -->
+<section id="plans">
   <div class="wrap">
-    <div class="head">
-      <p class="eyebrow">Three Plans</p>
-      <h2 class="display">Pick your level.<br><span class="serif">Start playing.</span></h2>
-      <p class="lede">Whether you play once a month or five days a week, there's a FLX membership for you.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:clamp(44px,5vw,66px)">
-
-      <!-- FREE MEMBERSHIP -->
-      <div class="pcard">
-        <div class="pcard-head">
-          <h3>Free Membership</h3>
-          <p class="pcard-subtitle">Test it out first</p>
-        </div>
-        <div class="pcard-price">
-          <span class="pcard-cost">Free</span>
-          <span class="pcard-period">Always</span>
-        </div>
-        <ul class="pcard-features">
-          <li>Drop-in open play</li>
-          <li>$10.00 per session</li>
-          <li>Access to CourtReserve</li>
-          <li>Community access</li>
-          <li class="fade">Court rental discounts</li>
-          <li class="fade">Member-only events</li>
-        </ul>
-        <div class="pcard-actions">
-          <CourtReserveButton to="membershipFree" label="Start Free" />
-        </div>
-        <p class="pcard-note">Perfect for trying the club and seeing if pickleball is your thing. Zero commitment.</p>
+    <div class="pricing-head">
+      <div class="pricing-head-left">
+        <p class="eyebrow">Pricing</p>
+        <h2 class="display">Simple. Honest.<br><span class="serif">Worth it.</span></h2>
       </div>
-
-      <!-- MONTHLY MEMBERSHIP -->
-      <div class="pcard featured">
-        <div class="pcard-badge">Most Popular</div>
-        <div class="pcard-head">
-          <h3>Monthly Membership</h3>
-          <p class="pcard-subtitle">Play whenever</p>
-        </div>
-        <div class="pcard-price">
-          <span class="pcard-cost">$59</span>
-          <span class="pcard-period">/month</span>
-        </div>
-        <ul class="pcard-features">
-          <li>Unlimited open play</li>
-          <li>$7.00 per session</li>
-          <li>Court rental discount</li>
-          <li>Member-only events</li>
-          <li>Lesson discount (10%)</li>
-          <li>Cancel anytime</li>
-        </ul>
-        <div class="pcard-actions">
-          <CourtReserveButton to="membershipMonthly" label="Join Monthly" />
-        </div>
-        <p class="pcard-note">The everyday player option. Unlimited sessions make this the best value if you play 2+ times per week.</p>
-      </div>
-
-      <!-- ANNUAL MEMBERSHIP -->
-      <div class="pcard">
-        <div class="pcard-head">
-          <h3>Annual Membership</h3>
-          <p class="pcard-subtitle">Best value</p>
-        </div>
-        <div class="pcard-price">
-          <span class="pcard-cost">$599</span>
-          <span class="pcard-period">/year</span>
-        </div>
-        <ul class="pcard-features">
-          <li>Unlimited open play</li>
-          <li>$7.00 per session</li>
-          <li>Court rental discount</li>
-          <li>Member-only events</li>
-          <li>Lesson discount (15%)</li>
-          <li>Same day cancellation</li>
-        </ul>
-        <div class="pcard-actions">
-          <CourtReserveButton to="membershipAnnual" label="Join Annual" />
-        </div>
-        <p class="pcard-note">Lock in a full year. Pay ~$50/month but only commit once. Biggest lesson discount too.</p>
-      </div>
+      <p class="pricing-head-right">Two ways to play. No hidden fees. The member price pays for itself after two open play sessions a month.</p>
     </div>
 
-    <!-- SUMMER SPECIAL NOTE -->
+    <!-- PRICING CARDS -->
+    <div class="pcard-grid">
+
+      <!-- FREE / NON-MEMBER -->
+      <div class="pcard">
+        <span class="pcard-badge">No Commitment</span>
+        <h3 class="pcard-title">Non-Member</h3>
+        <div class="pcard-price">
+          <span class="pcard-dollar">Free</span>
+          <span class="pcard-period">to register</span>
+        </div>
+        <p class="pcard-desc">Create a free CourtReserve account and start playing at standard rates. No membership fee, no commitment.</p>
+        <ul class="pcard-features">
+          <li><span class="feat-label">Open Play Sessions —</span><strong>$10.00</strong></li>
+          <li><span class="feat-label">Court Rentals —</span><strong>$40.00 / hr</strong></li>
+          <li><span class="feat-label">Ball Machine —</span><strong>$10/hr + court rental</strong></li>
+          <li><span class="feat-label">Reserve up to</span><strong>60 days</strong><span class="feat-label">in advance</span></li>
+          <li><span class="feat-label">Additional benefits included</span></li>
+        </ul>
+        <div class="pcard-actions">
+          <CourtReserveButton to="membershipFree" label="Create Free Account" />
+        </div>
+      </div>
+
+      <!-- MONTHLY MEMBER -->
+      <div class="pcard pcard--featured">
+        <span class="pcard-badge pcard-badge--blue">Best Value</span>
+        <h3 class="pcard-title">Monthly Member</h3>
+        <div class="pcard-price">
+          <span class="pcard-dollar-sign">$</span><span class="pcard-amount">15</span><span class="pcard-period">/mo</span>
+        </div>
+        <p class="pcard-desc">30-day membership. Pay as you go, no long-term commitment. Save on every session and rental all month.</p>
+        <ul class="pcard-features">
+          <li><span class="feat-label">Open Play Sessions —</span><strong>$7.00</strong></li>
+          <li><span class="feat-label">Court Rentals —</span><strong>$20.00 / hr</strong></li>
+          <li><span class="feat-label">Ball Machine —</span><strong>$10/hr + court rental</strong></li>
+          <li><span class="feat-label">Reserve up to</span><strong>60 days</strong><span class="feat-label">in advance</span></li>
+          <li><span class="feat-label">Additional benefits included</span></li>
+        </ul>
+        <div class="pcard-actions">
+          <CourtReserveButton to="membershipMonthly" label="Join Now — $15/Mo" />
+        </div>
+      </div>
+
+      <!-- ANNUAL MEMBER -->
+      <div class="pcard">
+        <span class="pcard-badge">Best Annual Value</span>
+        <h3 class="pcard-title">Annual Member</h3>
+        <div class="pcard-price">
+          <span class="pcard-dollar-sign">$</span><span class="pcard-amount">150</span><span class="pcard-period">/yr</span>
+        </div>
+        <p class="pcard-desc">Yearly membership, runs for 1 full year from purchase date. Same great member rates as monthly — one payment, done for the year.</p>
+        <ul class="pcard-features">
+          <li><span class="feat-label">Open Play Sessions —</span><strong>$7.00</strong></li>
+          <li><span class="feat-label">Court Rentals —</span><strong>$20.00 / hr</strong></li>
+          <li><span class="feat-label">Ball Machine —</span><strong>$10/hr + court rental</strong></li>
+          <li><span class="feat-label">Reserve up to</span><strong>60 days</strong><span class="feat-label">in advance</span></li>
+          <li><span class="feat-label">Additional benefits included</span></li>
+          <li><span class="feat-label">Save</span><strong>$30 vs 12 monthly payments</strong></li>
+        </ul>
+        <div class="pcard-actions">
+          <CourtReserveButton to="membershipAnnual" label="Join Annual — $150/Yr" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SUMMER SPECIAL BANNER -->
     <!-- TEMPORARY: Remove this banner after August 31, 2026 -->
-    <div style="margin-top:clamp(30px,4vw,50px);padding:20px 24px;background:var(--coal-3);border:1px solid var(--line);border-radius:8px;text-align:center">
-      <p style="color:var(--muted);font:500 .95rem/1.5 var(--body);margin:0"><strong style="color:var(--text)">Summer Special:</strong> Join through August 31st and get your first month half off. Monthly and annual plans both apply.</p>
+    <div class="summer-banner">
+      <div class="summer-banner-left">
+        <span class="summer-badge">★ Summer Special</span>
+        <h3>Unlimited Open Play — Available Seasonally</h3>
+        <p>During the summer we offer an unlimited open play membership so you can show up as many times as you want for one flat monthly rate. Check CourtReserve or call us to see if the summer rate is currently active.</p>
+      </div>
+      <a class="btn btn-ghost" href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">Check Availability →</a>
     </div>
-  </div>
-</section>
 
-<!-- INSURANCE PROGRAMS SECTION -->
-<section id="insurance">
-  <div class="wrap">
-    <div class="head">
-      <p class="eyebrow">Optional Add-Ons</p>
-      <h2 class="display">Insurance &amp;<br><span class="serif">Protection Plans.</span></h2>
-      <p class="lede">Protect yourself with comprehensive pickleball insurance covering injuries, liability, and medical costs.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,40px);margin-top:clamp(40px,5vw,60px)">
-      <div class="insurance-card">
-        <h3>PPA (Professional Pickleball Association) Insurance</h3>
-        <p class="ins-desc">Official PPA coverage for competitive play, tournaments, and club liability. Available to all members.</p>
-        <ul class="ins-list">
-          <li>Tournament play coverage</li>
-          <li>Injury protection up to $1M</li>
-          <li>Annual membership included</li>
-          <li>Affordable rates</li>
-        </ul>
-        <p class="ins-price">Rates vary by membership level. Ask at the desk or call <a href="tel:6077352965">607-735-2965</a>.</p>
+    <!-- INSURANCE / WELLNESS -->
+    <div class="insurance-wrap">
+      <div class="insurance-header">
+        <span class="insurance-icon" aria-hidden="true">⚡</span>
+        <div>
+          <h3>We Accept Insurance Fitness &amp; Wellness Programs</h3>
+          <p>Use your existing health benefits to play pickleball at FLX</p>
+        </div>
       </div>
-      <div class="insurance-card">
-        <h3>Club Waiver &amp; Health Forms</h3>
-        <p class="ins-desc">Complete your health forms and waiver online through CourtReserve. Required before your first session.</p>
-        <ul class="ins-list">
-          <li>Quick 5-minute signup</li>
-          <li>Required for all players</li>
-          <li>Renewal each year</li>
-          <li>Store on your account</li>
-        </ul>
-        <p class="ins-price">Free to complete. <a href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">Complete on CourtReserve</a>.</p>
+      <div class="insurance-grid">
+        <a href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener" class="ins-card">
+          <span class="ins-icon" aria-hidden="true">🛡</span>
+          <div>
+            <strong>Silver &amp; Fit</strong>
+            <span>Click to enroll</span>
+          </div>
+        </a>
+        <a href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener" class="ins-card">
+          <span class="ins-icon" aria-hidden="true">🛡</span>
+          <div>
+            <strong>Renew Active</strong>
+            <span>Click to enroll</span>
+          </div>
+        </a>
+        <a href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener" class="ins-card">
+          <span class="ins-icon" aria-hidden="true">🛡</span>
+          <div>
+            <strong>Silver Sneakers</strong>
+            <span>Click to enroll</span>
+          </div>
+        </a>
       </div>
+      <p class="insurance-note">Not sure if your plan qualifies? <a href="tel:6077352965">Call us at 607-735-2965</a> and we'll help you find out.</p>
     </div>
-  </div>
-</section>
 
-<!-- FAQ SECTION -->
-<section class="light" id="faqs">
-  <div class="wrap">
-    <div class="head">
-      <p class="eyebrow">Questions?</p>
-      <h2 class="display">Membership<br><span class="serif">Answered.</span></h2>
-    </div>
-    <div class="faq-grid">
-      <div class="faq-item">
-        <h3>How do I sign up for a membership?</h3>
-        <p>Sign up through <a href="https://app.courtreserve.com/Online/Memberships/Public/9518" target="_blank" rel="noopener">CourtReserve</a> using the links on this page, or call the club at <a href="tel:6077352965">607-735-2965</a>. You'll choose your plan, enter payment, and complete your waiver. You can start playing the same day.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can I cancel my membership?</h3>
-        <p>Yes. Monthly memberships can be cancelled anytime, and we only charge through the end of your billing cycle. Annual members can cancel with same-day notice. No penalties, no hassle. Just call or log into CourtReserve.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What's the difference between Free and Paid membership?</h3>
-        <p>Free members pay $10 per open play session. Paid members get unlimited sessions at $7 per visit (or unlimited, depending on play frequency). Paid members also get court rental and lesson discounts, and access to member-only events.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Do I need to commit to a full year?</h3>
-        <p>No. Our monthly plan is month-to-month with no long-term commitment. The annual plan offers better pricing but can be cancelled anytime. And the free membership has zero commitment — start whenever you want.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can I try out the club before joining?</h3>
-        <p>Absolutely. Start with a free membership, come watch a few games, and try open play at member prices. If you love it, upgrade to paid membership anytime. No pressure.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Does my membership include lessons or court rentals?</h3>
-        <p>Open play is included (unlimited with paid membership, $10 per session with free). Lessons and court rentals are sold separately but members get discounts. Members also save $20-30 per hour on court rentals.</p>
-      </div>
-    </div>
+    <p class="questions-line">Questions about membership? <a href="tel:6077352965">Call us at 607-735-2965</a> — we're happy to walk you through everything.</p>
+
   </div>
 </section>
 
 <!-- FINAL CTA -->
-<div class="inner-final">
-  <div class="glow" aria-hidden="true"></div>
+<div class="mem-final">
   <div class="wrap">
-    <h2>Your next rally starts here.<span class="serif">Pick a plan and get on the court.</span></h2>
-    <p class="lede">Free to try, affordable to commit, unlimited to play. Membership made simple.</p>
+    <h2>Ready to join?</h2>
+    <p class="mem-final-sub">Sign up takes two minutes on CourtReserve.</p>
+    <p class="mem-final-desc">Create your account, choose your membership, and start playing at member rates right away.</p>
     <div class="ctas">
-      <CourtReserveButton to="membershipMonthly" label="Join as a Member" />
-      <a class="btn btn-ghost" href="/play">Explore Open Play</a>
+      <CourtReserveButton to="bookCourt" label="Become a Member" />
+      <a class="btn btn-ghost" href="tel:6077352965">Call 607-735-2965</a>
     </div>
   </div>
 </div>
 
 <style>
-.pcard {
-  background: var(--coal-3);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 30px 26px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s;
+/* ── Pricing section head ── */
+.pricing-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(30px, 5vw, 60px);
+  align-items: end;
+  margin-bottom: clamp(44px, 5vw, 66px);
 }
-.pcard:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow);
-  border-color: rgba(61, 99, 255, 0.45);
-}
-.pcard.featured {
-  border-color: var(--cobalt-hi);
-  background: linear-gradient(135deg, rgba(61, 99, 255, 0.05) 0%, transparent 100%);
-  transform: scale(1.02);
-  box-shadow: var(--shadow);
-}
-.pcard-badge {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--cobalt);
-  color: #fff;
-  font: 600 11px/1 var(--body);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: 20px;
-  white-space: nowrap;
-}
-.pcard-head {
-  margin-bottom: 18px;
-}
-.pcard-head h3 {
-  font: 700 1.3rem/1.2 var(--body);
-  color: var(--text);
-  margin: 0 0 6px 0;
-}
-.pcard-subtitle {
-  font: 500 0.9rem/1.3 var(--body);
+.pricing-head-right {
+  font: 500 1.05rem/1.7 var(--body);
   color: var(--muted);
   margin: 0;
+  padding-bottom: 0.5rem;
+}
+
+/* ── Card grid ── */
+.pcard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.pcard {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: border-color 0.3s, transform 0.3s var(--ease);
+}
+.pcard:hover {
+  border-color: rgba(61,99,255,0.4);
+  transform: translateY(-4px);
+}
+.pcard--featured {
+  border-color: var(--cobalt-hi);
+  background: linear-gradient(160deg, rgba(61,99,255,0.08) 0%, rgba(61,99,255,0.02) 100%);
+}
+
+/* ── Badge ── */
+.pcard-badge {
+  display: inline-block;
+  font: 700 10px/1 var(--body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cobalt-hi);
+  background: rgba(61,99,255,0.15);
+  border: 1px solid rgba(61,99,255,0.3);
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-bottom: 14px;
+  align-self: flex-start;
+}
+.pcard-badge--blue {
+  color: #fff;
+  background: var(--cobalt);
+  border-color: var(--cobalt-hi);
+}
+
+/* ── Card content ── */
+.pcard-title {
+  font: 600 1.05rem/1.2 var(--body);
+  color: var(--muted);
+  margin: 0 0 12px 0;
 }
 .pcard-price {
-  padding: 18px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 22px;
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 4px;
+  margin-bottom: 14px;
 }
-.pcard-cost {
-  font: 800 2.4rem/1 var(--display);
+.pcard-dollar {
+  font: 800 2.6rem/1 var(--display);
+  color: var(--text);
+  text-transform: uppercase;
+}
+.pcard-dollar-sign {
+  font: 700 1.4rem/1 var(--display);
+  color: var(--text);
+  align-self: flex-start;
+  margin-top: 6px;
+}
+.pcard-amount {
+  font: 800 3.6rem/1 var(--display);
   color: var(--text);
 }
 .pcard-period {
-  font: 500 0.95rem/1 var(--body);
+  font: 500 1rem/1 var(--body);
   color: var(--muted);
+}
+.pcard-desc {
+  font: 400 0.9rem/1.6 var(--body);
+  color: var(--muted);
+  margin: 0 0 18px 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
 }
 .pcard-features {
   list-style: none;
-  margin: 0 0 22px 0;
+  margin: 0 0 24px 0;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -276,139 +275,189 @@ const description = 'Affordable membership plans for pickleball players in Horse
   flex: 1;
 }
 .pcard-features li {
-  font: 500 0.96rem/1.4 var(--body);
+  font: 400 0.92rem/1.4 var(--body);
   color: var(--muted);
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 .pcard-features li::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  background: var(--cobalt);
-  border-radius: 50%;
+  content: '♦';
+  color: var(--cobalt-hi);
+  font-size: 0.6rem;
   flex: none;
-  margin-top: 3px;
+  margin-top: 2px;
 }
-.pcard-features li.fade {
-  opacity: 0.6;
+.pcard-features strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.feat-label {
+  color: var(--muted);
 }
 .pcard-actions {
-  margin-bottom: 14px;
+  margin-top: auto;
 }
-.pcard-note {
-  font: 500 0.88rem/1.5 var(--body);
+
+/* ── Summer Special banner ── */
+.summer-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: clamp(30px, 4vw, 50px);
+  padding: 28px 32px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.summer-banner-left { flex: 1; }
+.summer-badge {
+  display: inline-block;
+  font: 700 10px/1 var(--body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cobalt-hi);
+  background: rgba(61,99,255,0.15);
+  border: 1px solid rgba(61,99,255,0.3);
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-bottom: 12px;
+}
+.summer-banner h3 {
+  font: 600 1.1rem/1.3 var(--body);
+  color: var(--text);
+  margin: 0 0 8px 0;
+}
+.summer-banner p {
+  font: 400 0.9rem/1.6 var(--body);
   color: var(--muted);
   margin: 0;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
 }
-.insurance-card {
-  background: var(--coal-3);
+
+/* ── Insurance / Wellness ── */
+.insurance-wrap {
+  margin-top: clamp(20px, 3vw, 30px);
+  padding: 28px 32px;
+  background: rgba(255,255,255,0.03);
   border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.insurance-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+.insurance-icon {
+  font-size: 1.4rem;
+  background: rgba(61,99,255,0.15);
+  border: 1px solid rgba(61,99,255,0.3);
   border-radius: 8px;
-  padding: 28px 26px;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
-}
-.insurance-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-}
-.insurance-card h3 {
-  font: 700 1.15rem/1.3 var(--body);
-  color: var(--text);
-  margin: 0 0 10px 0;
-}
-.ins-desc {
-  font: 500 0.95rem/1.6 var(--body);
-  color: var(--muted);
-  margin: 0 0 14px 0;
-}
-.ins-list {
-  list-style: none;
-  margin: 0 0 14px 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.ins-list li {
-  font: 500 0.93rem/1.4 var(--body);
-  color: var(--muted);
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-.ins-list li::before {
-  content: '✓';
-  color: var(--cobalt-hi);
-  font-weight: 700;
-  font-size: 1rem;
+  padding: 10px;
   flex: none;
 }
-.ins-price {
-  font: 500 0.9rem/1.5 var(--body);
+.insurance-header h3 {
+  font: 600 1.05rem/1.3 var(--body);
+  color: var(--text);
+  margin: 0 0 4px 0;
+}
+.insurance-header p {
+  font: 400 0.9rem/1.4 var(--body);
   color: var(--muted);
   margin: 0;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
 }
-.ins-price a {
-  color: var(--cobalt-hi);
-  text-decoration: none;
-  border-bottom: 1px solid var(--cobalt);
-  padding-bottom: 1px;
-}
-.faq-grid {
+.insurance-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-top: clamp(44px, 5vw, 66px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
 }
-.faq-item {
-  background: var(--coal-3);
+.ins-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.03);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 28px 26px;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
-.faq-item:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-}
-.faq-item h3 {
-  font: 700 1.1rem/1.3 var(--body);
+.ins-card:hover { border-color: rgba(61,99,255,0.4); }
+.ins-icon { font-size: 1.1rem; flex: none; }
+.ins-card strong {
+  display: block;
+  font: 600 0.95rem/1.2 var(--body);
   color: var(--text);
-  margin: 0 0 12px 0;
 }
-.faq-item p {
-  font: 500 0.95rem/1.6 var(--body);
+.ins-card span {
+  font: 400 0.82rem/1.2 var(--body);
+  color: var(--muted);
+}
+.insurance-note {
+  font: 400 0.88rem/1.5 var(--body);
   color: var(--muted);
   margin: 0;
 }
-.faq-item a {
+.insurance-note a {
   color: var(--cobalt-hi);
-  text-decoration: none;
-  border-bottom: 1px solid var(--cobalt);
-  padding-bottom: 1px;
+  text-decoration: underline;
+}
+
+/* ── Questions line ── */
+.questions-line {
+  text-align: center;
+  font: 400 0.95rem/1.6 var(--body);
+  color: var(--muted);
+  margin-top: clamp(24px, 3vw, 36px);
+}
+.questions-line a {
+  color: var(--cobalt-hi);
+  text-decoration: underline;
+}
+
+/* ── Final CTA ── */
+.mem-final {
+  background: var(--coal);
+  padding: clamp(80px, 10vw, 140px) 0;
+  text-align: center;
+}
+.mem-final h2 {
+  font: 800 clamp(2.8rem, 6vw, 5rem)/1 var(--display);
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0 0 16px 0;
+}
+.mem-final-sub {
+  font: 500 clamp(1.4rem, 3vw, 2.2rem)/1.3 var(--serif);
+  color: var(--cobalt-hi);
+  font-style: italic;
+  margin: 0 0 16px 0;
+}
+.mem-final-desc {
+  font: 400 1rem/1.6 var(--body);
+  color: var(--muted);
+  margin: 0 0 32px 0;
 }
 .ctas {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-top: 30px;
+  justify-content: center;
 }
+
+/* ── Responsive ── */
 @media (max-width: 900px) {
-  .pcard {
-    transform: none !important;
-  }
-  .pcard.featured {
-    transform: none !important;
-  }
-  .faq-grid {
-    grid-template-columns: 1fr;
-  }
+  .pricing-head { grid-template-columns: 1fr; }
+  .pcard-grid { grid-template-columns: 1fr; }
+  .insurance-grid { grid-template-columns: 1fr; }
+  .summer-banner { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 600px) {
+  .insurance-wrap { padding: 20px 18px; }
+  .summer-banner { padding: 20px 18px; }
 }
 </style>
 
