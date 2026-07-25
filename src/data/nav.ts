@@ -23,7 +23,7 @@ export const footerPlayLinks: NavItem[] = [
 
 export const footerClubLinks: NavItem[] = [
   { label: 'The Facility', href: '#facility' },
-  { label: 'Pro Shop', href: '#shop' },
+  { label: 'Pro Shop', href: '/pro-shop' },
   { label: 'Inside FLX', href: '#inside' },
   { label: 'Tournaments & Events', href: '/tournaments' },
 ];

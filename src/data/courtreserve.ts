@@ -8,7 +8,7 @@ export const COURTRESERVE_BASE_URL =
 
 export const courtReserveLinks = {
   // General "Book a Court" CTA used in nav, hero, footer, final CTA, mobile bar.
-  bookCourt: COURTRESERVE_BASE_URL,
+  bookCourt: 'https://app.courtreserve.com/Online/Reservations/Index/9518',
   general: COURTRESERVE_BASE_URL,
 
   // Specific membership-tier deep links from membership.html.
