@@ -357,13 +357,24 @@ const description = 'FLX Pickleball Club is an independent, community-focused in
 
 <script>
   import GLightbox from 'glightbox';
-  const lightbox = GLightbox({ selector: '.glightbox' });
+
+  /* astro:page-load fires on first load and after every client-side
+     navigation. It also fires on pages without any .glightbox links, so
+     tear down the previous instance and bail early when there's nothing
+     to bind — otherwise each navigation would leak another instance. */
+  let lightbox: ReturnType<typeof GLightbox> | null = null;
+  function initLightbox() {
+    lightbox?.destroy();
+    lightbox = null;
+    if (!document.querySelector('.glightbox')) return;
+    lightbox = GLightbox({ selector: '.glightbox' });
+  }
+  document.addEventListener('astro:page-load', initLightbox);
 </script>
 
 <script is:inline>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('astro:page-load', function() {
   var form = document.getElementById('contactForm');
-  var note = document.getElementById('formNote');
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();

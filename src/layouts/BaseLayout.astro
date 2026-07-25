@@ -1,6 +1,7 @@
 ---
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
 import { siteMeta } from '../data/siteMeta';
 import '../styles/global.css';
 
@@ -49,6 +50,31 @@ const ogImageUrl = new URL(ogImage, siteMeta.siteUrl).href;
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+<ClientRouter />
+<!-- is:global — ::view-transition-* pseudo-elements live outside the document
+     tree, so Astro's default style scoping would stop them matching. -->
+<style is:global>
+  ::view-transition-old(root) {
+    animation: 400ms cubic-bezier(0.4, 0, 0.2, 1) both flx-fade-out;
+  }
+  ::view-transition-new(root) {
+    animation: 500ms cubic-bezier(0.4, 0, 0.2, 1) both flx-fade-in;
+  }
+  @keyframes flx-fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  @keyframes flx-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+    }
+  }
+</style>
 </head>
 <body>
 
@@ -76,140 +102,192 @@ const ogImageUrl = new URL(ogImage, siteMeta.siteUrl).href;
 <Footer />
 
 <script>
-  /* Seamless ticker loop */
-  const track = document.getElementById('tickerTrack');
-  if (track) track.innerHTML += track.innerHTML;
+  /* ------------------------------------------------------------------
+     ClientRouter (view transitions) swaps the DOM without a full reload,
+     and this module only executes once per browser page-load. So anything
+     that touches the DOM has to re-run on `astro:page-load`, which fires
+     on the initial load AND after every client-side navigation.
 
-  /* Nav scroll state */
-  const header = document.getElementById('header');
-  const onScroll = () => { if (header) header.classList.toggle('scrolled', window.scrollY > 24); };
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
+     Listeners on `window`/`document` are attached once at module scope
+     (those objects survive the swap) and read element refs that are
+     refreshed on each page-load. Listeners on page elements go inside
+     initPage() — the DOM is new each time, so they can't accumulate.
+     ------------------------------------------------------------------ */
 
-  /* Mobile menu (header burger) */
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('mobileMenu');
-  if (burger && menu) {
-    burger.addEventListener('click', () => {
-      const open = menu.classList.toggle('open');
-      document.body.classList.toggle('menu-open', open);
-      burger.setAttribute('aria-expanded', String(open));
-    });
-    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
-      menu.classList.remove('open');
-      document.body.classList.remove('menu-open');
-      burger.setAttribute('aria-expanded', 'false');
-    }));
-  }
+  /* Element refs — reassigned on every page-load */
+  let header: HTMLElement | null = null;
+  let prog: HTMLElement | null = null;
+  let mbar: HTMLElement | null = null;
+  let totop: HTMLElement | null = null;
+  let court: HTMLElement | null = null;
+  let court2: HTMLElement | null = null;
+  let inner: HTMLElement | null = null;
 
-  /* Standalone always-visible mobile burger */
-  (function () {
-    const btn = document.getElementById('sbBurger');
-    const menuEl = document.getElementById('mobileMenu');
-    if (!btn || !menuEl) return;
-    btn.addEventListener('click', function () {
-      const open = menuEl.classList.toggle('open');
-      document.body.classList.toggle('menu-open', open);
-      btn.classList.toggle('open', open);
-    });
-    menuEl.querySelectorAll('a').forEach(function (a) {
-      a.addEventListener('click', function () {
-        menuEl.classList.remove('open');
-        document.body.classList.remove('menu-open');
-        btn.classList.remove('open');
-      });
-    });
-  })();
+  /* Observers — disconnected and rebuilt on every page-load */
+  let io: IntersectionObserver | null = null;
+  let navObs: IntersectionObserver | null = null;
+  let shopObs: IntersectionObserver | null = null;
 
-  /* Scroll reveals */
-  const io = new IntersectionObserver((es) => {
-    es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-
-  /* Layered hero parallax: scroll + gentle pointer drift (desktop, motion-safe) */
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const desktop = window.matchMedia('(min-width:900px)').matches;
-  const court = document.getElementById('heroCourt');
-  const court2 = document.getElementById('heroCourt2');
-  const inner = document.getElementById('heroInner');
+
+  /* ---- Handlers bound to window/document (attached once, below) ---- */
+
+  function onScroll() {
+    if (header) header.classList.toggle('scrolled', window.scrollY > 24);
+  }
+
+  function chromeTick() {
+    const scrollY = window.scrollY;
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    if (prog) prog.style.width = (docH > 0 ? Math.min(100, (scrollY / docH) * 100) : 0) + '%';
+    if (mbar) mbar.classList.toggle('up', scrollY > 120);
+    if (totop) totop.classList.toggle('show', scrollY > 600);
+  }
+
   let sy = 0, mx = 0, my = 0, raf: number | null = null;
   function applyHero() {
-    if (court) (court as HTMLElement).style.transform = `translate(${mx * 14}px,${sy * 0.07 + my * 10}px)`;
-    if (court2) (court2 as HTMLElement).style.transform = `translate(${mx * 26}px,${sy * 0.12 + my * 18}px)`;
-    if (inner) (inner as HTMLElement).style.transform = `translate(${mx * -6}px,${my * -4}px)`;
+    if (court) court.style.transform = `translate(${mx * 14}px,${sy * 0.07 + my * 10}px)`;
+    if (court2) court2.style.transform = `translate(${mx * 26}px,${sy * 0.12 + my * 18}px)`;
+    if (inner) inner.style.transform = `translate(${mx * -6}px,${my * -4}px)`;
     raf = null;
   }
   function queueHero() { if (!raf) raf = requestAnimationFrame(applyHero); }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', chromeTick, { passive: true });
   if (!reduce && desktop) {
-    window.addEventListener('scroll', () => { sy = Math.min(window.scrollY, window.innerHeight); queueHero(); }, { passive: true });
-    document.querySelector('.hero')?.addEventListener('pointermove', (e) => {
-      const pe = e as PointerEvent;
-      mx = (pe.clientX / window.innerWidth - 0.5);
-      my = (pe.clientY / window.innerHeight - 0.5);
+    window.addEventListener('scroll', () => {
+      sy = Math.min(window.scrollY, window.innerHeight);
       queueHero();
     }, { passive: true });
   }
 
-  /* Scroll progress bar, sticky mobile bar, back-to-top */
-  const prog = document.getElementById('progress');
-  const mbar = document.getElementById('mbar');
-  const totop = document.getElementById('totop');
-  function chromeTick() {
-    const scrollY = window.scrollY;
-    const docH = document.documentElement.scrollHeight - window.innerHeight;
-    if (prog) (prog as HTMLElement).style.width = (docH > 0 ? Math.min(100, (scrollY / docH) * 100) : 0) + '%';
-    if (mbar) mbar.classList.toggle('up', scrollY > 120);
-    if (totop) totop.classList.toggle('show', scrollY > 600);
-  }
-  window.addEventListener('scroll', chromeTick, { passive: true });
-  chromeTick();
-  totop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  /* Pause hero video when tab hidden — looked up fresh so it survives swaps */
+  document.addEventListener('visibilitychange', () => {
+    const v = document.getElementById('heroVideo') as HTMLVideoElement | null;
+    if (!v) return;
+    document.hidden ? v.pause() : v.play().catch(() => {});
+  });
 
-  /* Pro shop video: play only when visible (saves bandwidth) */
-  const shopVid = document.getElementById('shopVideo') as HTMLVideoElement | null;
-  if (shopVid) {
-    const shopObs = new IntersectionObserver((es) => {
-      es.forEach((e) => (e.isIntersecting ? shopVid.play().catch(() => {}) : shopVid.pause()));
-    }, { threshold: 0.15 });
-    shopObs.observe(shopVid);
-    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
-      shopVid.pause();
-      shopVid.removeAttribute('autoplay');
+  /* ---- Per-page setup ---- */
+
+  function initPage() {
+    header = document.getElementById('header');
+    prog = document.getElementById('progress');
+    mbar = document.getElementById('mbar');
+    totop = document.getElementById('totop');
+    court = document.getElementById('heroCourt');
+    court2 = document.getElementById('heroCourt2');
+    inner = document.getElementById('heroInner');
+
+    /* Seamless ticker loop — guard so it doubles once per DOM, not per call */
+    const track = document.getElementById('tickerTrack');
+    if (track && !track.dataset.looped) {
+      track.innerHTML += track.innerHTML;
+      track.dataset.looped = 'true';
     }
-  }
 
-  /* Pause hero video when tab hidden */
-  const heroVid = document.getElementById('heroVideo') as HTMLVideoElement | null;
-  if (heroVid) {
-    document.addEventListener('visibilitychange', () => {
-      document.hidden ? heroVid.pause() : heroVid.play().catch(() => {});
-    });
-    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+    /* Mobile menu (header burger) */
+    const menu = document.getElementById('mobileMenu');
+    const burger = document.getElementById('burger');
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        document.body.classList.toggle('menu-open', open);
+        burger.setAttribute('aria-expanded', String(open));
+      });
+      menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+        menu.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        burger.setAttribute('aria-expanded', 'false');
+      }));
+    }
+
+    /* Standalone always-visible mobile burger */
+    const sbBurger = document.getElementById('sbBurger');
+    if (sbBurger && menu) {
+      sbBurger.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        document.body.classList.toggle('menu-open', open);
+        sbBurger.classList.toggle('open', open);
+      });
+      menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+        menu.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        sbBurger.classList.remove('open');
+      }));
+    }
+
+    /* A menu left open during navigation would otherwise stick */
+    document.body.classList.remove('menu-open');
+
+    /* Scroll reveals */
+    io?.disconnect();
+    io = new IntersectionObserver((es) => {
+      es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io?.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io!.observe(el));
+
+    /* Hero pointer drift (desktop, motion-safe) */
+    if (!reduce && desktop) {
+      document.querySelector('.hero')?.addEventListener('pointermove', (e) => {
+        const pe = e as PointerEvent;
+        mx = (pe.clientX / window.innerWidth - 0.5);
+        my = (pe.clientY / window.innerHeight - 0.5);
+        queueHero();
+      }, { passive: true });
+    }
+
+    totop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* Pro shop video: play only when visible (saves bandwidth) */
+    shopObs?.disconnect();
+    shopObs = null;
+    const shopVid = document.getElementById('shopVideo') as HTMLVideoElement | null;
+    if (shopVid) {
+      if (reduce) {
+        shopVid.pause();
+        shopVid.removeAttribute('autoplay');
+      } else {
+        shopObs = new IntersectionObserver((es) => {
+          es.forEach((e) => (e.isIntersecting ? shopVid.play().catch(() => {}) : shopVid.pause()));
+        }, { threshold: 0.15 });
+        shopObs.observe(shopVid);
+      }
+    }
+
+    const heroVid = document.getElementById('heroVideo') as HTMLVideoElement | null;
+    if (heroVid && reduce) {
       heroVid.pause();
       heroVid.removeAttribute('autoplay');
     }
+
+    /* Active nav link on scroll */
+    navObs?.disconnect();
+    const navLinks = [...document.querySelectorAll('nav.links a')];
+    navObs = new IntersectionObserver((es) => {
+      es.forEach((e) => {
+        if (e.isIntersecting) {
+          navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('section[id],div[id="top"]').forEach((s) => navObs!.observe(s));
+
+    /* Contact form (front-end only; connect a form provider before launch) */
+    const cf = document.getElementById('contactForm');
+    if (cf) cf.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const note = document.getElementById('formNote');
+      if (note) note.innerHTML = 'Thanks — while the online form is being set up, call <a href="tel:6077352965" style="color:var(--text);text-decoration:underline">607-735-2965</a> or message the club on Facebook and we\'ll get right back to you.';
+    });
+
+    onScroll();
+    chromeTick();
   }
 
-  /* Active nav link on scroll */
-  const sections = [...document.querySelectorAll('section[id],div[id="top"]')];
-  const navLinks = [...document.querySelectorAll('nav.links a')];
-  const navObs = new IntersectionObserver((es) => {
-    es.forEach((e) => {
-      if (e.isIntersecting) {
-        navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
-      }
-    });
-  }, { threshold: 0.35 });
-  sections.forEach((s) => s.id && navObs.observe(s));
-
-  /* Contact form (front-end only; connect a form provider before launch) */
-  const _cf = document.getElementById('contactForm');
-  if (_cf) _cf.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const note = document.getElementById('formNote');
-    if (note) note.innerHTML = 'Thanks — while the online form is being set up, call <a href="tel:6077352965" style="color:var(--text);text-decoration:underline">607-735-2965</a> or message the club on Facebook and we\'ll get right back to you.';
-  });
+  document.addEventListener('astro:page-load', initPage);
 </script>
 
 </body>
