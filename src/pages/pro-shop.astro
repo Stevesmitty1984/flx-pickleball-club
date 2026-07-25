@@ -47,14 +47,14 @@ const description = 'Shop quality pickleball paddles, balls, apparel, and access
     <div class="shop-cats">
 
       <!-- PADDLES -->
-      <div class="shop-cat" id="cat-paddles">
-        <div class="shop-cat-header" onclick="toggleCat('cat-paddles')">
+      <details class="shop-cat">
+        <summary class="shop-cat-header">
           <div class="cat-left">
             <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3C8 3 5 6.5 5 10c0 4.5 7 11 7 11s7-6.5 7-11c0-3.5-3-7-7-7z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
             <div><h3>Paddles</h3><span class="cat-count">JOOLA · Selkirk · SLK · LUXX — 20 models</span></div>
           </div>
           <div class="cat-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></div>
-        </div>
+        </summary>
         <div class="cat-body">
           <ul class="cat-items">
             <li class="cat-item"><span>Joola Agassi (16MM / 14MM)</span><b>$200–$280</b></li>
@@ -80,17 +80,17 @@ const description = 'Shop quality pickleball paddles, balls, apparel, and access
           </ul>
           <p class="cat-note">Not sure which paddle is right for you? Ask at the desk — or try before you buy with our demo wall.</p>
         </div>
-      </div>
+      </details>
 
       <!-- ACCESSORIES -->
-      <div class="shop-cat" id="cat-accessories">
-        <div class="shop-cat-header" onclick="toggleCat('cat-accessories')">
+      <details class="shop-cat">
+        <summary class="shop-cat-header">
           <div class="cat-left">
             <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg></div>
             <div><h3>Balls &amp; Accessories</h3><span class="cat-count">Grips · Edge tape · Covers · More — 9 items</span></div>
           </div>
           <div class="cat-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></div>
-        </div>
+        </summary>
         <div class="cat-body">
           <ul class="cat-items">
             <li class="cat-item"><span>Joola Edge Guard Tape</span><b>$9.95–$17.95</b></li>
@@ -104,17 +104,17 @@ const description = 'Shop quality pickleball paddles, balls, apparel, and access
             <li class="cat-item"><span>Single Overgrip</span><b>$2.00</b></li>
           </ul>
         </div>
-      </div>
+      </details>
 
       <!-- APPAREL -->
-      <div class="shop-cat" id="cat-apparel">
-        <div class="shop-cat-header" onclick="toggleCat('cat-apparel')">
+      <details class="shop-cat">
+        <summary class="shop-cat-header">
           <div class="cat-left">
             <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H5v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10h1.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div>
             <div><h3>FLX Apparel &amp; Gear</h3><span class="cat-count">Shirts · Hoodies · Hats · Bags — 10 items</span></div>
           </div>
           <div class="cat-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></div>
-        </div>
+        </summary>
         <div class="cat-body">
           <ul class="cat-items">
             <li class="cat-item"><span>FLX T-Shirt</span><b>$20.00</b></li>
@@ -129,17 +129,17 @@ const description = 'Shop quality pickleball paddles, balls, apparel, and access
             <li class="cat-item"><span>Joola Tour Elite Pro Bag</span><b>$139.95</b></li>
           </ul>
         </div>
-      </div>
+      </details>
 
-      <!-- SNACKS & DRINKS + MISC -->
-      <div class="shop-cat" id="cat-snacks">
-        <div class="shop-cat-header" onclick="toggleCat('cat-snacks')">
+      <!-- SNACKS & DRINKS -->
+      <details class="shop-cat">
+        <summary class="shop-cat-header">
           <div class="cat-left">
             <div class="cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
             <div><h3>Snacks, Drinks &amp; More</h3><span class="cat-count">Energize between games — 35+ items</span></div>
           </div>
           <div class="cat-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg></div>
-        </div>
+        </summary>
         <div class="cat-body">
           <ul class="cat-items">
             <li class="cat-item"><span>Bottled Water</span><b>$1.00</b></li>
@@ -170,7 +170,7 @@ const description = 'Shop quality pickleball paddles, balls, apparel, and access
             </ul>
           </div>
         </div>
-      </div>
+      </details>
 
     </div>
   </div>
@@ -203,11 +203,11 @@ const description = 'Shop quality pickleball paddles, balls, apparel, and access
 </section>
 
 <!-- FINAL CTA -->
-<div class="inner-final">
-  <div class="glow" aria-hidden="true"></div>
+<div class="shop-final">
   <div class="wrap">
-    <h2>Stop in before your next session.<span class="serif">The shop is open whenever the club is.</span></h2>
-    <p class="lede">Ask about paddles, demo gear, or apparel. We're here seven days a week.</p>
+    <h2 class="shop-final-h">Stop in before your next session.</h2>
+    <p class="shop-final-sub">The shop is open whenever the club is.</p>
+    <p class="shop-final-desc">Ask about paddles, demo gear, or apparel. We're here seven days a week.</p>
     <div class="ctas">
       <a class="btn btn-primary" href="tel:6077352965">Call 607-735-2965 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <a class="btn btn-ghost" href="/about">Get Directions</a>
@@ -216,7 +216,7 @@ const description = 'Shop quality pickleball paddles, balls, apparel, and access
 </div>
 
 <style>
-.shop-cats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:clamp(44px,5vw,66px);position:relative;z-index:2}
+.shop-cats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:clamp(44px,5vw,66px);position:relative;z-index:2;align-items:start}
 .shop-cat{background:rgba(16,20,27,.82);border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:box-shadow .35s var(--ease),border-color .35s;backdrop-filter:blur(12px)}
 .shop-cat:hover{box-shadow:var(--shadow);border-color:rgba(61,99,255,.45)}
 .shop-cat-header{display:flex;align-items:center;justify-content:space-between;padding:24px 26px;cursor:pointer;user-select:none;gap:16px}
@@ -228,10 +228,11 @@ const description = 'Shop quality pickleball paddles, balls, apparel, and access
 .cat-count{font:500 11px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px;display:block}
 .cat-arr{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;flex:none;color:var(--cobalt-hi);transition:all .35s var(--ease)}
 .cat-arr svg{width:14px;height:14px;transition:transform .35s var(--ease)}
-.shop-cat.open .cat-arr svg{transform:rotate(180deg)}
-.shop-cat.open .cat-arr{border-color:var(--cobalt);background:var(--cobalt);color:#fff}
-.cat-body{display:none;border-top:1px solid var(--line);padding:0 26px 22px}
-.shop-cat.open .cat-body{display:block}
+.cat-body{border-top:1px solid var(--line);padding:0 26px 22px}
+details.shop-cat summary{list-style:none}
+details.shop-cat summary::-webkit-details-marker{display:none}
+details.shop-cat[open] .cat-arr{border-color:var(--cobalt);background:var(--cobalt);color:#fff}
+details.shop-cat[open] .cat-arr svg{transform:rotate(180deg)}
 .cat-items{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:0}
 .cat-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);gap:12px}
 .cat-item:last-child{border-bottom:none}
@@ -245,13 +246,32 @@ const description = 'Shop quality pickleball paddles, balls, apparel, and access
 @media(max-width:700px){
   .shop-cats{grid-template-columns:1fr}
 }
+.shop-final {
+  background: var(--coal);
+  padding: clamp(80px, 10vw, 140px) 0;
+  text-align: center;
+}
+.shop-final-h {
+  font: 800 clamp(2.8rem, 6vw, 5rem)/1 var(--display);
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0 0 16px 0;
+}
+.shop-final-sub {
+  font: 500 clamp(1.4rem, 3vw, 2.2rem)/1.3 var(--serif);
+  color: var(--cobalt-hi);
+  font-style: italic;
+  margin: 0 0 16px 0;
+}
+.shop-final-desc {
+  font: 400 1rem/1.6 var(--body);
+  color: var(--muted);
+  margin: 0 0 32px 0;
+}
+.shop-final .ctas {
+  justify-content: center;
+}
 </style>
 
-<script>
-function toggleCat(id) {
-  const el = document.getElementById(id);
-  el.classList.toggle('open');
-}
-</script>
 
 </BaseLayout>
